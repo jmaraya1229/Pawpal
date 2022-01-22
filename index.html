@@ -18,9 +18,7 @@
     <nav>
         <button class="button is-pulled-right is-info is-large js-modal-trigger" data-target="favorite-page">Favorites</button>
     </nav>
-
     <br><br><br>
-
     <div class="has-background-info py-3">
     <div class="field is-grouped is-grouped-centered">
         <div class="field is-inline-block-desktop">
@@ -29,8 +27,7 @@
             <input class="input is-medium" type="text" placeholder="location">
             </div>
         </div>
-
-        <!-- Add in location API from petfinder? -->
+        Add in location API from petfinder?
         <div class="field is-inline-block-desktop">
             <label class="label is-medium ml-3 has-text-white">Distance</label>
             <div class="control">
@@ -56,7 +53,7 @@
 <div class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
-      <!-- Any other Bulma elements you want -->
+      Any other Bulma elements you want
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
   </div>
@@ -393,7 +390,7 @@
     </div>
 =======
           <figure>
-              <img src="https://picsum.photos/400/400" alt="temp">
+              <img id="dog-pic" src="https://picsum.photos/400/400" alt="temp">
           </figure>
       </div>
         <p class="title has-text-centered">Dog Name</p>
@@ -405,7 +402,7 @@
     <article class="tile is-child box">
       <div class="columns is-flex is-centered">
         <figure>
-            <img src="https://picsum.photos/399/400" alt="temp">
+            <img id="cat-pic" src="https://picsum.photos/399/400" alt="temp">
         </figure>
     </div>
       <p class="title has-text-centered">Cat name</p>
@@ -417,11 +414,11 @@
     <article class="tile is-child box">
       <div class="columns is-flex is-centered">
         <figure>
-            <img src="https://picsum.photos/401/400" alt="temp">
+            <img id="random-pic" src="https://picsum.photos/401/400" alt="temp">
         </figure>
     </div>
-      <p class="title has-text-centered">Animal Name</p>
-      <p class="subtitle has-text-centered ">Description? Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam rerum accusantium modi soluta nobis saepe.</p>
+      <p id="randomname" class="title has-text-centered">Animal Name</p>
+      <p id="randomdesc" class="subtitle has-text-centered ">Description? Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam rerum accusantium modi soluta nobis saepe.</p>
     </article>
   </div>
 </div>
@@ -524,7 +521,8 @@
 
 >>>>>>> main
 </body>
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/@petfinder/petfinder-js/dist/petfinder.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./Assets/JS/app.js"></script>
 </html>

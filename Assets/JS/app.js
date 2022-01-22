@@ -28,68 +28,76 @@ const client = new petfinder.Client({
 // showAnimals("dog", "chihuahua")
 
 async function getpics() {
-  let randompics = await client.animal.search({
-    type: "dog",
-    primary_photo_cropped: true,
+  let randompic = await client.animal.search({
     limit: 10,
   });
 
-  console.log(randompics);
-  console.log(randompics.data.animals[0]);
+  console.log(randompic);
+  console.log(randompic.data.animals[0]);
 
-  let animal = randompics.data.animals[0];
+  let animal = randompic.data.animals[0];
+
+  document.getElementById("randomname").textContent = animal.name;
+
+  document.getElementById("randomdesc").textContent = animal.description;
 
   console.log(animal.primary_photo_cropped);
 
-  let photo = animal.primary_photo_cropped.medium;
-  console.log(photo);
+  let randomphoto = animal.primary_photo_cropped.medium;
+  
+  console.log(randomphoto);
 
-  document.getElementById("picture").src = photo;
+  document.getElementById("random-pic").src = randomphoto;
 }
 
 getpics();
 // trent's code
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
   function openModal($el) {
-    $el.classList.add('is-active');
+    $el.classList.add("is-active");
   }
 
   function closeModal($el) {
-    $el.classList.remove('is-active');
+    $el.classList.remove("is-active");
   }
 
   function closeAllModals() {
-    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+    (document.querySelectorAll(".modal") || []).forEach(($modal) => {
       closeModal($modal);
     });
   }
 
   // Add a click event on buttons to open a specific modal
-  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+  (document.querySelectorAll(".js-modal-trigger") || []).forEach(($trigger) => {
     const modal = $trigger.dataset.target;
     const $target = document.getElementById(modal);
     console.log($target);
 
-    $trigger.addEventListener('click', () => {
+    $trigger.addEventListener("click", () => {
       openModal($target);
     });
   });
 
   // Add a click event on various child elements to close the parent modal
-  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
-    const $target = $close.closest('.modal');
+  (
+    document.querySelectorAll(
+      ".modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button"
+    ) || []
+  ).forEach(($close) => {
+    const $target = $close.closest(".modal");
 
-    $close.addEventListener('click', () => {
+    $close.addEventListener("click", () => {
       closeModal($target);
     });
   });
 
   // Add a keyboard event to close all modals
-  document.addEventListener('keydown', (event) => {
+  document.addEventListener("keydown", (event) => {
     const e = event || window.event;
 
-    if (e.keyCode === 27) { // Escape key
+    if (e.keyCode === 27) {
+      // Escape key
       closeAllModals();
     }
   });
