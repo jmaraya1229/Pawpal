@@ -31,26 +31,50 @@ async function getpics() {
   let randompic = await client.animal.search({
     limit: 10,
   });
+  let dogpic = await client.animal.search({
+    type: "dog",
+    limit: 10,
+  });
+  let catpic = await client.animal.search({
+    type: "cat",
+    limit: 10,
+  });
 
-  console.log(randompic);
-  console.log(randompic.data.animals[0]);
+//   console.log(randompic);
+//   console.log(randompic.data.animals[0]);
 
-  let animal = randompic.data.animals[0];
+  let randomanimal = randompic.data.animals[0];
+  let dog = dogpic.data.animals[0];
+  let cat = catpic.data.animals[0];
 
-  document.getElementById("randomname").textContent = animal.name;
+  document.getElementById("randomname").textContent = randomanimal.name;
 
-  document.getElementById("randomdesc").textContent = animal.description;
+  document.getElementById("randomdesc").textContent = randomanimal.description;
 
-  console.log(animal.primary_photo_cropped);
+  document.getElementById("dogname").textContent = dog.name;
 
-  let randomphoto = animal.primary_photo_cropped.medium;
-  
-  console.log(randomphoto);
+  document.getElementById("dogdesc").textContent = dog.description;
+
+  document.getElementById("catname").textContent = cat.name;
+
+  document.getElementById("catdesc").textContent = cat.description;
+
+//   console.log(randomanimal.primary_photo_cropped);
+
+  let randomphoto = randomanimal.primary_photo_cropped.medium;
+  let catphoto = cat.primary_photo_cropped.medium;
+  let dogphoto = dog.primary_photo_cropped.medium;
+
+//   console.log(randomphoto);
 
   document.getElementById("random-pic").src = randomphoto;
+  document.getElementById("dog-pic").src = dogphoto;
+  document.getElementById("cat-pic").src = catphoto;
 }
 
 getpics();
+
+
 // trent's code
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
