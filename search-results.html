@@ -8,9 +8,70 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
+
+    <img id="picture" src="" alt="adopt me today">
+
     <nav></nav>
-    <div></div>
+    <div>
+        <form action="submit">
+            <select name="species">
+                <option value="">dog</option>
+                <option value="">cat</option>
+                <option value="">others</option>
+            </select>
+            <input name="breed" type="text"></input>
+            <select name="age" id="">
+                <option value="">Baby</option>
+                <option value="">Young</option>
+                <option value="">Adult</option>
+                <option value="">Old</option>
+            </select>
+            <select name="size">
+                <option value="">small</option>
+                <option value="">mid</option>
+                <option value="">big</option>
+                <option value="">xl</option>
+                <option value="">thicc</option>
+            </select>
+            <select name="gender" id="">
+                <option value="">Male<option>
+                <option value="">Female</option>
+            </select>
+            <input type="text" name="color" id=""></input>
+            <select name="coat" id="">
+                <option value="">Short</option>
+                <option value="">Long</option>
+                <option value="">Hypoallergenic</option>
+            </select>
+            <input type="checkbox" name="spay-neuter" id="spay-neuter">
+            <label for="spay-neuter">Spayed/Neutered</label>
+            <input type="checkbox" name="house-trained" id="house-trained">
+            <label for="house-trained">House Trained</label>
+            <input type="checkbox" name="declawed" id="declawed">
+            <label for="declawed">Declawed</label>
+            <input type="checkbox" name="special-needs" id="special-needs">
+            <label for="special-needs">Special Needs</label>
+            <input type="checkbox" name="shots" id="shots">
+            <label for="shots">Shots</label>
+            <input type="checkbox" name="good-with-kids" id="good-with-kids">
+            <label for="good-with-kids">Good with Children</label>
+            <input type="checkbox" name="good-with-cats" id="good-with-cats">
+            <label for="good-with-cats">Good with Cats</label>
+            <input type="checkbox" name="good-with-dogs" id="good-with-dogs">
+            <label for="good-with-dogs">Good with Dogs</label>
+            
+
+            </form>
+    </div>
+    <div>
+        <div class="results">
+            
+        </div>
+    </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/@petfinder/petfinder-js/dist/petfinder.min.js"></script>
 <script src="./Assets/JS/app.js"></script>
+
 </html>
