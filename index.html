@@ -6,9 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoptable Cats and Dogs in Your Area!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="./Assets/CSS/styles.css">
 </head>
 
+=======
+<!-- <<<<<<< JesseBranch
+    <link rel="stylesheet" href="./Assets/CSS/styles.css">
+</head>
+<body>
+    <nav>
+        <button class="button is-pulled-right is-info is-large js-modal-trigger" data-target="favorite-page">Favorites</button>
+    </nav>
+
+    <br><br><br>
+
+    <div class="has-background-info py-3">
+    <div class="field is-grouped is-grouped-centered">
+        <div class="field is-inline-block-desktop">
+            <label class="label is-medium has-text-white">Search here!</label>
+            <div class="control">
+            <input class="input is-medium" type="text" placeholder="location">
+            </div>
+        </div>
+
+        <!-- Add in location API from petfinder? -->
+        <div class="field is-inline-block-desktop">
+            <label class="label is-medium ml-3 has-text-white">Distance</label>
+            <div class="control">
+            <div class="select is-medium mx-3">
+                <select>
+                <option>5 miles</option>
+                <option>10 miles</option>
+                <option>15 miles</option>
+                <option>20 miles</option>
+                </select>
+            </div>
+            </div>
+        </div>
+        
+        <div class="field is-inline-block-desktop">
+            <div class="control">
+                <button id="submit" class="button is-outlined is-medium">Search!</button>
+            </div> 
+        </div>
+    </div>
+</div>
+
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <!-- Any other Bulma elements you want -->
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+<div id="favorite-page" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+        <p class="modal-card-title">Pet Name</p>
+        <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+        <p>
+            Pet info
+        </p>
+        </section>
+        <footer class="modal-card-foot">
+        <p> Contact Info</p>
+        </footer>
+    </div>
+</div>
+ -->
+
+<!-- Trent's code -->
+    <link rel="stylesheet" href="/Assets/CSS/styles.css">
+    
+>>>>>>> main
 <body class="has-background-light">
   <!--NavBar Start-->
     <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -172,6 +247,7 @@
     <div class="tile is-parent ">
         <article class="tile is-child box">
         <div class="columns is-flex is-centered">
+<<<<<<< HEAD
             <figure>
                 <img src="https://picsum.photos/399/400" alt="temp">
             </figure>
@@ -315,6 +391,138 @@
             </footer>
         </div>
     </div>
+=======
+          <figure>
+              <img src="https://picsum.photos/400/400" alt="temp">
+          </figure>
+      </div>
+        <p class="title has-text-centered">Dog Name</p>
+        <p class="subtitle has-text-centered">Description? Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum provident, maxime dolor consectetur voluptatibus ea odio nihil tenetur quam reprehenderit magnam quae labore voluptatum ad, repellat officiis corrupti sed neque expedita nam vel? Ullam soluta, officia sapiente, doloribus rem adipisci eos, dignissimos est ipsam deserunt nihil numquam consectetur. Incidunt, non.</p>
+      </article>
+    </div>
+  <!--Cat Pic-->
+  <div class="tile is-parent ">
+    <article class="tile is-child box">
+      <div class="columns is-flex is-centered">
+        <figure>
+            <img src="https://picsum.photos/399/400" alt="temp">
+        </figure>
+    </div>
+      <p class="title has-text-centered">Cat name</p>
+      <p class="subtitle has-text-centered">Description? Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis culpa expedita, officiis recusandae consectetur cum?</p>
+    </article>
+  </div>
+  <!--Random Animal-->
+  <div class="tile is-parent">
+    <article class="tile is-child box">
+      <div class="columns is-flex is-centered">
+        <figure>
+            <img src="https://picsum.photos/401/400" alt="temp">
+        </figure>
+    </div>
+      <p class="title has-text-centered">Animal Name</p>
+      <p class="subtitle has-text-centered ">Description? Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam rerum accusantium modi soluta nobis saepe.</p>
+    </article>
+  </div>
+</div>
+</div>
+
+
+<!--Modal-->
+<div id="modal-js-example" class="modal">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box">
+      <p>Modal JS example</p>
+      <form action="submit">
+        <label class="is-size-4" for="type">Species:</label> 
+        <select class="mb-3 is-size-6" name="species">
+              <option value=""></option>
+              <option value="">Dog</option>
+              <option value="">Cat</option>
+              <option value="">Others</option>
+          </select>
+          <br>
+          <label class="is-size-4" for="breed">Breed:</label>
+          <input class="mb-3 is-size-6" name="breed" type="text"></input>
+          <br>
+          <label class="is-size-4" for="age">Age:</label>
+          <select class="mb-3 is-size-6" name="age" id="">
+              <option value=""></option>
+              <option value="">Baby</option>
+              <option value="">Young</option>
+              <option value="">Adult</option>
+              <option value="">Old</option>
+          </select>
+          <br>
+          <label class="is-size-4" for="size">Size:</label>
+          <select class="mb-3 is-size-6" name="size">
+              <option value=""></option>
+              <option value="">Small</option>
+              <option value="">Mid</option>
+              <option value="">Big</option>
+              <option value="">XL</option>
+              <option value="">THICC</option>
+          </select>
+          <br>
+          <label class="is-size-4" for="gender">Gender:</label>
+          <select class="mb-3 is-size-6" name="gender" id="">
+              <option value=""></option>
+              <option value="">Male<option>
+              <option value="">Female</option>
+          </select>
+          <br>
+          <label class="is-size-4" for="coatColor">Color:</label>
+          <input class="mb-3" type="text" name="color" id=""></input>
+          <br>
+          <label class="is-size-4" for="hairLength">Coat Length:</label>
+          <select class="mb-3 is-size-6" name="coat" id="">
+              <option value=""></option>
+              <option value="">Short</option>
+              <option value="">Long</option>
+              <option value="">Hypoallergenic</option>
+          </select>
+          <br>
+          <label class="mb-3 is-size-4"for="spay-neuter">Spayed/Neutered:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="spay-neuter" id="spay-neuter"> 
+          <br>
+          <label class="mb-3 is-size-4"for="house-trained">House Trained:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="house-trained" id="house-trained">
+          <br>
+          <label class="mb-3 is-size-4"for="declawed">Declawed:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="declawed" id="declawed">
+          <br>
+          <label class="mb-3 is-size-4"for="special-needs">Special Needs:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="special-needs" id="special-needs">
+          <br>
+          <label class="mb-3 is-size-4"for="shots">Shots:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="shots" id="shots">
+          <br>
+          <label class="mb-3 is-size-4"for="good-with-kids">Good with Children:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="good-with-kids" id="good-with-kids">  
+          <br>
+          <label class="mb-3 is-size-4" for="good-with-cats">Good with Cats:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="good-with-cats" id="good-with-cats"> 
+          <br>
+          <label class="mb-3 is-size-4" for="good-with-dogs">Good with Dogs:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="good-with-dogs" id="good-with-dogs">
+          </form>
+    </div>
+  </div>
+
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+>>>>>>> main
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

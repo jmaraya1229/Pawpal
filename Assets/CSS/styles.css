@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .is-vcentered {
   align-items: center;
   justify-content: center;
@@ -6,3 +7,24 @@
 .is-horizontal-center {
   justify-content: center;
 }
+=======
+
+#submit {
+    margin-top: 40px;
+}
+
+#forms {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+=======
+.is-vcentered {
+  align-items: center;
+  justify-content: center;
+}
+
+.is-horizontal-center {
+  justify-content: center;
+}
+
+>>>>>>> main
