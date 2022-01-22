@@ -1,8 +1,8 @@
-#submit {
-    margin-top: 40px;
+.is-vcentered {
+  align-items: center;
+  justify-content: center;
 }
 
-#forms {
-    margin-left: 10px;
-    margin-right: 10px;
+.is-horizontal-center {
+  justify-content: center;
 }
