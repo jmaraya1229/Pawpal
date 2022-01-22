@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+.is-vcentered {
+  align-items: center;
+  justify-content: center;
+}
+
+.is-horizontal-center {
+  justify-content: center;
+}
+=======
 
 #submit {
     margin-top: 40px;
@@ -17,3 +27,4 @@
   justify-content: center;
 }
 
+>>>>>>> main
