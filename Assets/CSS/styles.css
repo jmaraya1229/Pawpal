@@ -1,0 +1,8 @@
+.is-vcentered {
+  align-items: center;
+  justify-content: center;
+}
+
+.is-horizontal-center {
+  justify-content: center;
+}
