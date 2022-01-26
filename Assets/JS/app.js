@@ -29,28 +29,40 @@ const client = new petfinder.Client({
 
 async function getpics() {
   let randompic = await client.animal.search({
-    limit: 10,
-  });
+    limit: 4,
+  })
 
-  console.log(randompic);
-  console.log(randompic.data.animals[0]);
+//   console.log(randompic);
+//   console.log(randompic.data.animals[0]);
 
-  let animal = randompic.data.animals[0];
+  let pic1 = randompic.data.animals[0];
+  let pic2 = randompic.data.animals[1];
+  let pic3 = randompic.data.animals[2];
 
-  document.getElementById("randomname").textContent = animal.name;
+  document.getElementById("randomname").textContent = pic1.name;
 
-  document.getElementById("randomdesc").textContent = animal.description;
+  document.getElementById("randomdesc").textContent = pic1.description;
 
-  console.log(animal.primary_photo_cropped);
+  document.getElementById("dogname").textContent = pic2.name;
 
-  let randomphoto = animal.primary_photo_cropped.medium;
-  
-  console.log(randomphoto);
+  document.getElementById("dogdesc").textContent = pic2.description;
 
-  document.getElementById("random-pic").src = randomphoto;
+  document.getElementById("catname").textContent = pic3.name;
+
+  document.getElementById("catdesc").textContent = pic3.description;
+
+//   console.log(randomanimal.primary_photo_cropped);
+
+//   console.log(randomphoto);
+
+  document.getElementById("random-pic").src = pic1.primary_photo_cropped.medium;
+  document.getElementById("dog-pic").src = pic2.primary_photo_cropped.medium;
+  document.getElementById("cat-pic").src = pic3.primary_photo_cropped.medium;
 }
 
 getpics();
+
+
 // trent's code
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
