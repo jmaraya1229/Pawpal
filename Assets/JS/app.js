@@ -3,6 +3,8 @@
 
 // let token = new petfinder.Client({apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4", secret:"AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD"})
 
+let geoAPIKey = "adbcd1fea76a22fc844c199455b4e260";
+
 const client = new petfinder.Client({
   apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4",
   secret: "AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD",
@@ -30,10 +32,10 @@ const client = new petfinder.Client({
 async function getpics() {
   let randompic = await client.animal.search({
     limit: 4,
-  })
+  });
 
-//   console.log(randompic);
-//   console.log(randompic.data.animals[0]);
+  //   console.log(randompic);
+  //   console.log(randompic.data.animals[0]);
 
   let pic1 = randompic.data.animals[0];
   let pic2 = randompic.data.animals[1];
@@ -51,9 +53,9 @@ async function getpics() {
 
   document.getElementById("catdesc").textContent = pic3.description;
 
-//   console.log(randomanimal.primary_photo_cropped);
+  //   console.log(randomanimal.primary_photo_cropped);
 
-//   console.log(randomphoto);
+  //   console.log(randomphoto);
 
   document.getElementById("random-pic").src = pic1.primary_photo_cropped.medium;
   document.getElementById("dog-pic").src = pic2.primary_photo_cropped.medium;
@@ -62,6 +64,32 @@ async function getpics() {
 
 getpics();
 
+async function search() {
+  event.preventDefault();
+  let searchstring = document.getElementById("searchstring").value;
+  let distance = document.getElementById("distance").value;
+  let locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=${searchstring}&limit=5&appid=${geoAPIKey}`
+  let location = await (await fetch(locationURL)).json();
+  
+  console.log(location)
+
+  let lat = location[0].lat
+  let lon = location[0].lon
+
+  console.log(lat)
+  console.log(lon)
+
+  let latlon = lat + ', ' + lon
+
+  let results = await client.animal.search({
+    location: latlon,
+    distance: distance, 
+    limit: 10,
+  });
+  console.log(results);
+}
+let form = document.getElementById("searchform");
+form.addEventListener("submit", search);
 
 // trent's code
 document.addEventListener("DOMContentLoaded", () => {
