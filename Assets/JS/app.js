@@ -29,47 +29,35 @@ const client = new petfinder.Client({
 
 async function getpics() {
   let randompic = await client.animal.search({
-    limit: 10,
-  });
-  let dogpic = await client.animal.search({
-    type: "dog",
-    limit: 10,
-  });
-  let catpic = await client.animal.search({
-    type: "cat",
-    limit: 10,
-  });
+    limit: 4,
+  })
 
 //   console.log(randompic);
 //   console.log(randompic.data.animals[0]);
 
-  let randomanimal = randompic.data.animals[0];
-  let dog = dogpic.data.animals[0];
-  let cat = catpic.data.animals[0];
+  let pic1 = randompic.data.animals[0];
+  let pic2 = randompic.data.animals[1];
+  let pic3 = randompic.data.animals[2];
 
-  document.getElementById("randomname").textContent = randomanimal.name;
+  document.getElementById("randomname").textContent = pic1.name;
 
-  document.getElementById("randomdesc").textContent = randomanimal.description;
+  document.getElementById("randomdesc").textContent = pic1.description;
 
-  document.getElementById("dogname").textContent = dog.name;
+  document.getElementById("dogname").textContent = pic2.name;
 
-  document.getElementById("dogdesc").textContent = dog.description;
+  document.getElementById("dogdesc").textContent = pic2.description;
 
-  document.getElementById("catname").textContent = cat.name;
+  document.getElementById("catname").textContent = pic3.name;
 
-  document.getElementById("catdesc").textContent = cat.description;
+  document.getElementById("catdesc").textContent = pic3.description;
 
 //   console.log(randomanimal.primary_photo_cropped);
 
-  let randomphoto = randomanimal.primary_photo_cropped.medium;
-  let catphoto = cat.primary_photo_cropped.medium;
-  let dogphoto = dog.primary_photo_cropped.medium;
-
 //   console.log(randomphoto);
 
-  document.getElementById("random-pic").src = randomphoto;
-  document.getElementById("dog-pic").src = dogphoto;
-  document.getElementById("cat-pic").src = catphoto;
+  document.getElementById("random-pic").src = pic1.primary_photo_cropped.medium;
+  document.getElementById("dog-pic").src = pic2.primary_photo_cropped.medium;
+  document.getElementById("cat-pic").src = pic3.primary_photo_cropped.medium;
 }
 
 getpics();
