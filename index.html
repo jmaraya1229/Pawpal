@@ -76,7 +76,7 @@
  
     <!--Header-->
     <header class="is-capitalized is-centered has-text-centered is-size-2">
-    <h1>Pets of the Week!</h1>
+      <h1>Sponsored Pets!</h1>
     </header>
 
 
@@ -114,7 +114,6 @@
                 <option value="">Mid</option>
                 <option value="">Big</option>
                 <option value="">XL</option>
-                <option value="">THICC</option>
             </select>
             <br>
             <label class="is-size-4" for="gender">Gender:</label>
@@ -176,25 +175,13 @@
         <article class="tile is-child box is-center">
             <div class="columns is-flex is-centered">
             <figure>
-                <img src="https://picsum.photos/400/400" alt="temp">
+                <img id="dog-pic" src="https://picsum.photos/400/400" alt="temp">
             </figure>
         </div>
             <p class="title has-text-centered">Dog Name</p>
             <p class="subtitle has-text-centered">Description? Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum provident, maxime dolor consectetur voluptatibus ea odio nihil tenetur quam reprehenderit magnam quae labore voluptatum ad, repellat officiis corrupti sed neque expedita nam vel? Ullam soluta, officia sapiente, doloribus rem adipisci eos, dignissimos est ipsam deserunt nihil numquam consectetur. Incidunt, non.</p>
         </article>
         </div>
-    <!--Cat Pic-->
-    <div class="tile is-parent ">
-        <article class="tile is-child box">
-        <div class="columns is-flex is-centered">
-          <figure>
-              <img id="dog-pic" src="https://picsum.photos/400/400" alt="temp">
-          </figure>
-      </div>
-        <p class="title has-text-centered">Dog Name</p>
-        <p class="subtitle has-text-centered">Description? Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum provident, maxime dolor consectetur voluptatibus ea odio nihil tenetur quam reprehenderit magnam quae labore voluptatum ad, repellat officiis corrupti sed neque expedita nam vel? Ullam soluta, officia sapiente, doloribus rem adipisci eos, dignissimos est ipsam deserunt nihil numquam consectetur. Incidunt, non.</p>
-      </article>
-    </div>
   <!--Cat Pic-->
   <div class="tile is-parent ">
     <article class="tile is-child box">
@@ -229,8 +216,8 @@
 
   <div class="modal-content">
     <div class="box">
-      <p>Modal JS example</p>
-      <form action="submit">
+      <p class="has-text-centered">Select Your Preferences!</p>
+      <form class="has-text-centered" action="submit">
         <label class="is-size-4" for="type">Species:</label> 
         <select class="mb-3 is-size-6" name="species">
               <option value=""></option>
@@ -258,7 +245,6 @@
               <option value="">Mid</option>
               <option value="">Big</option>
               <option value="">XL</option>
-              <option value="">THICC</option>
           </select>
           <br>
           <label class="is-size-4" for="gender">Gender:</label>
