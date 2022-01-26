@@ -10,66 +10,169 @@
 
 </head>
 <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a  role="button" class="navbar-burger js-modal-trigger" aria-label="menu" aria-expanded="false" data-target="modal-js-example"">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
 
-    <img id="picture" src="" alt="adopt me today">
+        <!--search bar-->
+        <div class="field has-addons pl-5 pt-3">
+            <div class="control">
+                <input class="input" type="text" placeholder="Location e.g San Diego">
+            </div>
+            <div class="control">
+                <div class="select">
+                    <select>
+                      <option>Distance</option>
+                      <option>5 miles</option>
+                      <option>10 miles</option>
+                      <option>15 miles</option>
+                      <option>20 miles</option>
+                    </select>
+                </div>
+            </div>
+            <button class="button">Search</button>
+        </div>
 
-    <nav></nav>
-    <div>
-        <form action="submit">
-            <select name="species">
-                <option value="Dog">dog</option>
-                <option value="Cat">cat</option>
-                <option value="">others</option>
-            </select>
-            <input name="breed" type="text"></input>
-            <select name="age" id="">
-                <option value="">Baby</option>
-                <option value="">Young</option>
-                <option value="">Adult</option>
-                <option value="">Old</option>
-            </select>
-            <select name="size">
-                <option value="">small</option>
-                <option value="">mid</option>
-                <option value="">big</option>
-                <option value="">xl</option>
-                <option value="">thicc</option>
-            </select>
-            <select name="gender" id="">
-                <option value="">Male<option>
-                <option value="">Female</option>
-            </select>
-            <input type="text" name="color" id=""></input>
-            <select name="coat" id="">
-                <option value="">Short</option>
-                <option value="">Long</option>
-                <option value="">Hypoallergenic</option>
-            </select>
-            <input type="checkbox" name="spay-neuter" id="spay-neuter">
-            <label for="spay-neuter">Spayed/Neutered</label>
-            <input type="checkbox" name="house-trained" id="house-trained">
-            <label for="house-trained">House Trained</label>
-            <input type="checkbox" name="declawed" id="declawed">
-            <label for="declawed">Declawed</label>
-            <input type="checkbox" name="special-needs" id="special-needs">
-            <label for="special-needs">Special Needs</label>
-            <input type="checkbox" name="shots" id="shots">
-            <label for="shots">Shots</label>
-            <input type="checkbox" name="good-with-kids" id="good-with-kids">
-            <label for="good-with-kids">Good with Children</label>
-            <input type="checkbox" name="good-with-cats" id="good-with-cats">
-            <label for="good-with-cats">Good with Cats</label>
-            <input type="checkbox" name="good-with-dogs" id="good-with-dogs">
-            <label for="good-with-dogs">Good with Dogs</label>
-            
+        <!--favorite button-->
+        <div class="navbar-end">
+            <button class="button is-info is-medium mt-2 js-modal-trigger" data-target="favorite-page" id="favorite-button">Favorites</button>
+        </div>
+        
+    </nav>
 
+    <header class="is-centered has-text-centered is-size-2">
+        <h1>Search Results</h1>
+    </header>
+
+    <br>
+
+    <div class="columns is-variable is-1-mobile is-3-desktop">
+        <aside class="column box is-narrow-mobile is-fullheight is-hidden-mobile has-text-left is-one-fifth ml-4">
+            <form action="submit">
+                <h1 class="is-size-4 has-text-centered has-text-weight-bold">Filter results:</h1>
+                <label class="is-size-4" for="type">Species:</label> 
+                <select class="mb-3 is-size-6" name="species">
+                    <option value=""></option>
+                    <option value="">Dog</option>
+                    <option value="">Cat</option>
+                    <option value="">Others</option>
+                </select>
+                <br>
+                <label class="is-size-4" for="breed">Breed:</label>
+                <input class="mb-3 is-size-6" name="breed" type="text"></input>
+                <br>
+                <label class="is-size-4" for="age">Age:</label>
+                <select class="mb-3 is-size-6" name="age" id="">
+                    <option value=""></option>
+                    <option value="">Baby</option>
+                    <option value="">Young</option>
+                    <option value="">Adult</option>
+                    <option value="">Old</option>
+                </select>
+                <br>
+                <label class="is-size-4" for="size">Size:</label>
+                <select class="mb-3 is-size-6" name="size">
+                    <option value=""></option>
+                    <option value="">Small</option>
+                    <option value="">Mid</option>
+                    <option value="">Big</option>
+                    <option value="">XL</option>
+                </select>
+                <br>
+                <label class="is-size-4" for="gender">Gender:</label>
+                <select class="mb-3 is-size-6" name="gender" id="">
+                    <option value=""></option>
+                    <option value="">Male<option>
+                    <option value="">Female</option>
+                    <option value="">Unknown</option>
+                </select>
+                <br>
+                <label class="is-size-4" for="coatColor">Color:</label>
+                <input class="mb-3" type="text" name="color" id=""></input>
+                <br>
+                <label class="is-size-4" for="hairLength">Coat Length:</label>
+                <select class="mb-3 is-size-6" name="coat" id="">
+                    <option value=""></option>
+                    <option value="">Short</option>
+                    <option value="">Long</option>
+                    <option value="">Hypoallergenic</option>
+                </select>
+                <br>
+                <label class="mb-3 is-size-4"for="spay-neuter">Spayed/Neutered:</label>
+                    <input class="mb-3" type="checkbox" name="spay-neuter" id="spay-neuter"> 
+                <br>
+                <label class="mb-3 is-size-4"for="house-trained">House Trained:</label>
+                    <input class="mb-3" type="checkbox" name="house-trained" id="house-trained">
+                <br>
+                <label class="mb-3 is-size-4"for="declawed">Declawed:</label>
+                    <input class="mb-3" type="checkbox" name="declawed" id="declawed">
+                <br>
+                <label class="mb-3 is-size-4"for="special-needs">Special Needs:</label>
+                    <input class="mb-3" type="checkbox" name="special-needs" id="special-needs">
+                <br>
+                <label class="mb-3 is-size-4"for="shots">Shots:</label>
+                    <input class="mb-3" type="checkbox" name="shots" id="shots">
+                <br>
+                <label class="mb-3 is-size-4"for="good-with-kids">Good with Children:</label>
+                    <input class="mb-3" type="checkbox" name="good-with-kids" id="good-with-kids">  
+                <br>
+                <label class="mb-3 is-size-4" for="good-with-cats">Good with Cats:</label>
+                    <input class="mb-3" type="checkbox" name="good-with-cats" id="good-with-cats"> 
+                <br>
+                <label class="mb-3 is-size-4" for="good-with-dogs">Good with Dogs:</label>
+                    <input class="mb-3" type="checkbox" name="good-with-dogs" id="good-with-dogs">
             </form>
-    </div>
-    <div>
-        <div class="results">
-            
+            <br>
+            <div class="buttons has-addons is-centered">
+                <button class="button has-addons is-centered has-text-weight-bold" id="filter-submit">Submit</button>
+            </div>
+        </aside>
+
+        <div class="column" id="populate-search-results">
+            <div class="column box">
+                <div class="title"> Pet </div>
+                <img>
+                <p>Pet info
+                </p>
+            </div>
+            <div class="column box">
+                <div class="title"> Pet </div>
+                <img>
+                <p>Pet info
+                </p>
+            </div>        
+            <div class="column box">
+                <div class="title"> Pet </div>
+                <img>
+                <p>Pet info
+                </p>
+            </div>        
+            <div class="column box">
+                <div class="title"> Pet </div>
+                <img>
+                <p>Pet info
+                </p>
+            </div>        
+            <div class="column box">
+                <div class="title"> Pet </div>
+                <img>
+                <p>Pet info
+                </p>
+            </div>
+            <div class="column box">
+                <div class="title"> Pet </div>
+                <img>
+                <p>Pet info
+                </p>
+            </div>
         </div>
     </div>
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
