@@ -6,3 +6,27 @@
 .is-horizontal-center {
   justify-content: center;
 }
+
+#dog-pic,
+#cat-pic,
+#random-pic {
+  width: 20rem;
+  height: 20rem;
+}
+
+form label,
+form select,
+form input {
+  width: 100%;
+}
+
+form input,
+form select {
+  color: white;
+  background-color: gray;
+  height: 3rem;
+}
+
+form select option {
+  text-align: center;
+}
