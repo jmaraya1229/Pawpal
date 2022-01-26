@@ -21,23 +21,23 @@
         </div>
 
         <!--search bar-->
-         <div class="field has-addons pl-5 pt-3">
+         <form id="searchform" class="field has-addons pl-5 pt-3">
             <div class="control">
-                <input class="input" type="text" placeholder="Location e.g San Diego">
+                <input id="searchstring" class="input" type="text" placeholder="Location e.g San Diego">
             </div>
             <div class="control">
                 <div class="select">
-                    <select>
+                    <select id="distance">
                       <option>Distance</option>
-                      <option>5 miles</option>
-                      <option>10 miles</option>
-                      <option>15 miles</option>
-                      <option>20 miles</option>
+                      <option value="5">5 miles</option>
+                      <option value="10">10 miles</option>
+                      <option value="15">15 miles</option>
+                      <option value="20">20 miles</option>
                     </select>
                 </div>
             </div>
-            <button class="button">Search</button>
-          </div>
+            <button type="submit" class="button">Search</button>
+         </form>
 
         <!--buttons-->
         <div class="navbar-menu">
