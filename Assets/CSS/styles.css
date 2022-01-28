@@ -38,3 +38,11 @@ form select {
 form select option {
   text-align: center;
 }
+
+.modal-content {
+  scrollbar-width: none;
+}
+
+.modal-conent::-webkit-scrollbar{
+  display: none;
+}

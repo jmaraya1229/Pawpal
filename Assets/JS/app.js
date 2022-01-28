@@ -5,29 +5,23 @@
 
 let geoAPIKey = "adbcd1fea76a22fc844c199455b4e260";
 
+// will's petfinder creds:
+// apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4",
+// secret: "AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD",
+
+// trent's petfinder creds:
+// apiKey: "c4Kr5BRTXhQEhXoQweeNHLhO43gdfD4sCbYy6vD9s93RuRluyB",
+// secret: "LpRMDqN9WakbzJjstuJ4TxzvQDg6Qk9o9I60R1na",
+
+// jesse's petfinder creds:
+// apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
+// secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
+
 const client = new petfinder.Client({
-  apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4",
-  secret: "AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD",
+  apiKey: "c4Kr5BRTXhQEhXoQweeNHLhO43gdfD4sCbYy6vD9s93RuRluyB",
+  secret: "LpRMDqN9WakbzJjstuJ4TxzvQDg6Qk9o9I60R1na",
 });
 
-// async function showAnimals(animalType, searchBreed) {
-//   let page = 1;
-//   do {
-//     apiResult = await client.animal.search({
-//       type: animalType,
-//       breed: searchBreed,
-//       page,
-//       limit: 100,
-//     });
-//     let dogIdx = (page - 1) * 100;
-//     apiResult.data.animals.forEach(function(animal) {
-//       console.log(` -- ${++dogIdx}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
-//     });
-
-//     page++;
-//   } while(apiResult.data.pagination && apiResult.data.pagination.total_pages >= page);
-// }
-// showAnimals("dog", "chihuahua")
 
 async function getpics() {
   let randompic = await client.animal.search({
@@ -71,7 +65,7 @@ async function getpics() {
   document.getElementById("cat-pic").src = pic3.photos[0].medium;
 }
 
-getpics();
+
 
 async function search() {
   event.preventDefault();
@@ -85,18 +79,18 @@ async function search() {
 
   let latlon = lat + ", " + lon;
   let page = 1;
-  let results = [];
+  let results = "";
   do {
     results = await client.animal.search({
     location: latlon,
     distance: distance,
     status: "adoptable",
     page,
-    limit: 10,
+    limit: 100,
   });
-    let dogIdx = (page - 1) * 10;
+    let animalID = (page - 1) * 100;
     results.data.animals.forEach(function(animal) {
-        console.log(` -- ${++dogIdx}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
+        console.log(` -- ${++animalID}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
   }); 
      page++;
     } while(results.data.pagination && results.data.pagination.total_pages >= page);
