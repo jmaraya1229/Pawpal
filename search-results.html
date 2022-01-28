@@ -11,13 +11,6 @@
 </head>
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
-        <!-- <div class="navbar-brand">
-          <a  role="button" class="navbar-burger js-modal-trigger" aria-label="menu" data-target="modal-js-example">
-            <span></span>
-            <span></span>
-            <span></span>
-          </a>
-        </div> -->
 
         <!--search bar-->
         <form id="searchform" class="field has-addons pl-5 pt-3">
@@ -41,9 +34,11 @@
 
         <!--favorite button-->
         <div class="navbar-end">
-            <button class="button is-info is-medium mt-2 js-modal-trigger" data-target="favorite-page" id="favorite-button">Favorites</button>
+            <button class="button is-info is-medium mt-2 js-modal-trigger is-hidden-mobile" data-target="favorite-page" id="favorite-button">
+                <ion-icon name="paw-outline"></ion-icon> 
+                Favorites
+            </button>        
         </div>
-        
     </nav>
 
     <header class="is-centered has-text-centered is-size-2">
@@ -264,6 +259,9 @@
             </form>
       </div>
     </div>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

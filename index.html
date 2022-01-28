@@ -18,29 +18,31 @@
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
-    </div> -->
 
-        <!--search bar-->
-         <form id="searchform" class="field has-addons pl-5 pt-3">
-            <div class="control">
-                <input id="searchstring" class="input" type="text" placeholder="Location e.g San Diego">
-            </div>
-            <div class="control">
-                <div class="select">
-                    <select id="distance">
-                      <option>Distance</option>
-                      <option value="5">5 miles</option>
-                      <option value="10">10 miles</option>
-                      <option value="15">15 miles</option>
-                      <option value="20">20 miles</option>
-                    </select>
-                </div>
-            </div>
-            <button type="submit" class="button">Search</button>
-         </form>
 
+  <!--search bar-->
+    <form id="searchform" class="field has-addons pl-5 pt-3">
+      <div class="control">
+          <input id="searchstring" class="input" type="text" placeholder="Location e.g San Diego">
+      </div>
+      <div class="control">
+          <div class="select">
+              <select id="distance">
+                <option>Distance</option>
+                <option value="5">5 miles</option>
+                <option value="10">10 miles</option>
+                <option value="15">15 miles</option>
+                <option value="20">20 miles</option>
+              </select>
+          </div>
+      </div>
+      <button type="submit" class="button">Search</button>
+    </form>
     <div class="navbar-end">
-      <button class="button is-info is-medium mt-2 js-modal-trigger" data-target="favorite-page" id="favorite-button">Favorites</button>
+      <button class="button is-info is-medium mt-2 js-modal-trigger is-hidden-mobile" data-target="favorite-page" id="favorite-button">
+      <ion-icon name="paw-outline"></ion-icon> 
+        Favorites
+      </button>
     </div>
   </nav>
 
@@ -266,6 +268,8 @@
 <button class="modal-close is-large" aria-label="close"></button>
 </div>
 
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/@petfinder/petfinder-js/dist/petfinder.min.js"></script>
