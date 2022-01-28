@@ -28,6 +28,27 @@ form select option {
   scrollbar-width: none;
 }
 
-.modal-conent::-webkit-scrollbar{
+.modal-content::-webkit-scrollbar{
   display: none;
 }
+
+.pet-pic {
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+.fav-btn {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
+.fav-btn:hover {
+  transform: scale(1.25);
+  cursor: pointer;
+}
+

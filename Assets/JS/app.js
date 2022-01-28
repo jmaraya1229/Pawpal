@@ -22,7 +22,6 @@ const client = new petfinder.Client({
   secret: "LpRMDqN9WakbzJjstuJ4TxzvQDg6Qk9o9I60R1na",
 });
 
-
 async function getpics() {
   let randompic = await client.animal.search({
     photos: true,
@@ -65,8 +64,6 @@ async function getpics() {
   document.getElementById("cat-pic").src = pic3.photos[0].medium;
 }
 
-
-
 async function search() {
   event.preventDefault();
   let searchstring = document.getElementById("searchstring").value;
@@ -82,22 +79,43 @@ async function search() {
   let results = "";
   do {
     results = await client.animal.search({
-    location: latlon,
-    distance: distance,
-    status: "adoptable",
-    page,
-    limit: 100,
-  });
+      location: latlon,
+      distance: distance,
+      status: "adoptable",
+      page,
+      limit: 100,
+    });
+    let resultscontainer = document.getElementById("populate-search-results");
     let animalID = (page - 1) * 100;
-    results.data.animals.forEach(function(animal) {
-        console.log(` -- ${++animalID}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
-  }); 
-     page++;
-    } while(results.data.pagination && results.data.pagination.total_pages >= page);
-       
-      
-  
-    console.log(results);
+
+    results.data.animals.forEach(function (animal) {
+      // console.log(` -- ${++animalID}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
+
+      // handle missing photo
+      if (animal.photos[0] === undefined) {
+          animal.photos = [{"medium":""}]
+          animal.photos[0].medium = "./Assets/IMAGES/Placeholder-Image-400.webp"
+      }
+      // append cards for results
+      resultscontainer.innerHTML = resultscontainer.innerHTML + 
+        `
+        <div id="${animal.id}" class="column box pet-card">
+        <div class="title">${animal.name}</div>
+        <div class="pet-pic">
+        <a href="${animal.url}" target="_blank"><img class="" src="${animal.photos[0].medium}"></a>
+        <img class="fav-btn" src="./Assets/IMAGES/heart-outline.svg">
+        </div>
+        <p>${animal.description}</p>
+        </div>
+        `
+    });
+    page++;
+  } while (
+    results.data.pagination &&
+    results.data.pagination.total_pages >= page
+  );
+
+  console.log(results);
 }
 let form = document.getElementById("searchform");
 form.addEventListener("submit", search);
