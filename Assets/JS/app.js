@@ -31,7 +31,9 @@ const client = new petfinder.Client({
 
 async function getpics() {
   let randompic = await client.animal.search({
-    limit: 4,
+    photos: true,
+    status: "adoptable",
+    limit: 3,
   });
 
   //   console.log(randompic);
@@ -40,14 +42,21 @@ async function getpics() {
   let pic1 = randompic.data.animals[0];
   let pic2 = randompic.data.animals[1];
   let pic3 = randompic.data.animals[2];
+  console.log(pic1);
+
+  document.getElementById("randomlink").href = pic1.url;
 
   document.getElementById("randomname").textContent = pic1.name;
 
   document.getElementById("randomdesc").textContent = pic1.description;
 
+  document.getElementById("doglink").href = pic2.url;
+
   document.getElementById("dogname").textContent = pic2.name;
 
   document.getElementById("dogdesc").textContent = pic2.description;
+
+  document.getElementById("catlink").href = pic3.url;
 
   document.getElementById("catname").textContent = pic3.name;
 
@@ -57,9 +66,9 @@ async function getpics() {
 
   //   console.log(randomphoto);
 
-  document.getElementById("random-pic").src = pic1.primary_photo_cropped.medium;
-  document.getElementById("dog-pic").src = pic2.primary_photo_cropped.medium;
-  document.getElementById("cat-pic").src = pic3.primary_photo_cropped.medium;
+  document.getElementById("random-pic").src = pic1.photos[0].medium;
+  document.getElementById("dog-pic").src = pic2.photos[0].medium;
+  document.getElementById("cat-pic").src = pic3.photos[0].medium;
 }
 
 getpics();
@@ -68,25 +77,33 @@ async function search() {
   event.preventDefault();
   let searchstring = document.getElementById("searchstring").value;
   let distance = document.getElementById("distance").value;
-  let locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=${searchstring}&limit=5&appid=${geoAPIKey}`
+  let locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=${searchstring}&limit=5&appid=${geoAPIKey}`;
   let location = await (await fetch(locationURL)).json();
-  
-  console.log(location)
 
-  let lat = location[0].lat
-  let lon = location[0].lon
+  let lat = location[0].lat;
+  let lon = location[0].lon;
 
-  console.log(lat)
-  console.log(lon)
-
-  let latlon = lat + ', ' + lon
-
-  let results = await client.animal.search({
+  let latlon = lat + ", " + lon;
+  let page = 1;
+  let results = [];
+  do {
+    results = await client.animal.search({
     location: latlon,
-    distance: distance, 
+    distance: distance,
+    status: "adoptable",
+    page,
     limit: 10,
   });
-  console.log(results);
+    let dogIdx = (page - 1) * 10;
+    results.data.animals.forEach(function(animal) {
+        console.log(` -- ${++dogIdx}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
+  }); 
+     page++;
+    } while(results.data.pagination && results.data.pagination.total_pages >= page);
+       
+      
+  
+    console.log(results);
 }
 let form = document.getElementById("searchform");
 form.addEventListener("submit", search);
