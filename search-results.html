@@ -28,7 +28,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="button">Search</button>
+            <button id="searchbutton" type="submit" class="button">Search</button>
             <button class="button js-modal-trigger" aria-label="menu" data-target="modal-js-example">Filters</button>
             </form>
 
@@ -144,7 +144,6 @@
         <div class="columns is-multiline is-mobile is-centered " id="populate-search-results">
 
         </div>
-    </div>
 
     <!--Modal-->
 <div id="modal-js-example" class="modal">
@@ -153,13 +152,12 @@
     <div class="modal-content">
       <div class="box">
         <p class="has-text-centered is-size-3">Select Your Preferences</p>
-        <form class="has-text-centered" action="submit">
+        <form id="search-filters" class="has-text-centered" action="submit">
           <label class="is-size-4" for="type">Species:</label> 
           <select class="mb-3 is-size-6" name="species">
-                <option value=""></option>
-                <option value="">Dog</option>
-                <option value="">Cat</option>
-                <option value="">Others</option>
+                <option value= null>All</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
             </select>
             <br>
             <label class="is-size-4" for="breed">Breed:</label>
@@ -167,38 +165,41 @@
             <br>
             <label class="is-size-4" for="age">Age:</label>
             <select class="mb-3 is-size-6" name="age" id="">
-                <option value=""></option>
-                <option value="">Baby</option>
-                <option value="">Young</option>
-                <option value="">Adult</option>
-                <option value="">Old</option>
+                <option value=null>All</option>
+                <option value="baby">Baby</option>
+                <option value="young">Young</option>
+                <option value="adult">Adult</option>
+                <option value="senior">Senior</option>
             </select>
             <br>
             <label class="is-size-4" for="size">Size:</label>
             <select class="mb-3 is-size-6" name="size">
-                <option value=""></option>
-                <option value="">Small</option>
-                <option value="">Mid</option>
-                <option value="">Big</option>
-                <option value="">XL</option>
+                <option value=null>All</option>
+                <option value="small">Small</option>
+                <option value="medium">Mid</option>
+                <option value="large">Large</option>
+                <option value="xlarge">XL</option>
             </select>
             <br>
             <label class="is-size-4" for="gender">Gender:</label>
-            <select class="mb-3 is-size-6" name="gender" id="">
-                <option value=""></option>
-                <option value="">Male<option>
-                <option value="">Female</option>
+            <select class="mb-3 is-size-6" name="gender">
+                <option value=null>All</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="unknown">Unknown</option>
             </select>
             <br>
-            <label class="is-size-4" for="coatColor">Color:</label>
+            <label class="is-size-4" for="colors">Color:</label>
             <input class="mb-3" type="text" name="color" id=""></input>
             <br>
-            <label class="is-size-4" for="hairLength">Coat Length:</label>
+            <label class="is-size-4" for="coat">Coat:</label>
             <select class="mb-3 is-size-6" name="coat" id="">
-                <option value=""></option>
-                <option value="">Short</option>
-                <option value="">Long</option>
-                <option value="">Hypoallergenic</option>
+                <option value=null>All</option>
+                <option value="short">Short</option>
+                <option value="medium">Medium</option>
+                <option value="long">Long</option>
+                <option value="wire">Wiry</option>
+                <option value="curly">Curly</option>
             </select>
             <br>
             <label class="mb-3 is-size-4"for="spay-neuter">Spayed/Neutered:</label>
@@ -221,17 +222,17 @@
             <br>
             <input class="mb-3" type="checkbox" name="shots" id="shots">
             <br>
-            <label class="mb-3 is-size-4"for="good-with-kids">Good with Children:</label>
+            <label class="mb-3 is-size-4"for="goodkids">Good with Children:</label>
             <br>
-            <input class="mb-3" type="checkbox" name="good-with-kids" id="good-with-kids">  
+            <input class="mb-3" type="checkbox" name="goodkids" id="goodkids">  
             <br>
-            <label class="mb-3 is-size-4" for="good-with-cats">Good with Cats:</label>
+            <label class="mb-3 is-size-4" for="goodcats">Good with Cats:</label>
             <br>
-            <input class="mb-3" type="checkbox" name="good-with-cats" id="good-with-cats"> 
+            <input class="mb-3" type="checkbox" name="goodcats" id="goodcats"> 
             <br>
-            <label class="mb-3 is-size-4" for="good-with-dogs">Good with Dogs:</label>
+            <label class="mb-3 is-size-4" for="gooddogs">Good with Dogs:</label>
             <br>
-            <input class="mb-3" type="checkbox" name="good-with-dogs" id="good-with-dogs">
+            <input class="mb-3" type="checkbox" name="gooddogs" id="gooddogs">
             <div class="buttons has-addons is-centered">
                 <button class="button has-addons is-centered has-text-weight-bold" id="filter-submit">Submit</button>
             </div>
