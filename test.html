@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./Assets/CSS/search-results.css">
+
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        
+        <!--search bar-->
+        <form id="searchform" class="field has-addons pl-5 pt-3">
+            <div class="control">
+                <input id="searchstring" class="input" type="text" placeholder="Location e.g San Diego">
+            </div>
+            <div class="control">
+                <div class="select">
+                    <select id="distance">
+                        <option>Distance</option>
+                        <option value="5">5 miles</option>
+                        <option value="10">10 miles</option>
+                        <option value="15">15 miles</option>
+                        <option value="20">20 miles</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="button">Search</button>
+            <button class="button js-modal-trigger" aria-label="menu" data-target="filter-page">Filters</button>
+            </form>
+
+        <!--favorite button-->
+        <div class="navbar-end">
+            <button class="button is-link is-medium mt-2 js-modal-trigger is-hidden-mobile" data-target="favorite-page" id="favorite-button">
+                <ion-icon name="paw-outline"></ion-icon> 
+                Favorites
+            </button>        
+        </div>
+
+    <!-- Mobile Favorite Button -->
+    <button class="button is-link is-pulled-right mt-2 is-hidden-desktop js-modal-trigger" data-target="favorite-page" id="favorite-button">
+        <ion-icon name="paw-outline"></ion-icon> 
+      </button>
+    </nav>
+
+  <!--Header-->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="hero-body">
+        <h1 class="title has-text-centered is-1 has-text-white has-text-weight-bold is-size-3-mobile">
+          Results
+        </h1>
+      </div>
+    </div>
+  </section>
+
+    <!-- Result columns -->
+    <div class="columns is-multiline has-text-centered is-centered">
+        <div class="column is-one-quarter box">
+            <img src="/Assets/IMAGES/Placeholder-Image-400.webp">
+            <p class="title">pet</p>
+            <p class="subtitle">Subtitle</p>        
+        </div>
+        <div class="column is-one-quarter box">
+            <img src="/Assets/IMAGES/Placeholder-Image-400.webp">
+            <p class="title">pet</p>
+            <p class="subtitle">Subtitle</p>
+        </div>
+        <div class="column is-one-quarter box">
+          <img src="/Assets/IMAGES/Placeholder-Image-400.webp">
+            <p class="title">pet</p>
+            <p class="subtitle">Subtitle</p>
+        </div>
+        <div class="column is-one-quarter box">
+          <img src="/Assets/IMAGES/Placeholder-Image-400.webp">
+            <p class="title">pet</p>
+            <p class="subtitle">Subtitle</p>
+        </div>
+        <div class="column is-one-quarter box">
+          <img src="/Assets/IMAGES/Placeholder-Image-400.webp">
+            <p class="title">pet</p>
+            <p class="subtitle">Subtitle</p>
+        </div>
+        <div class="column is-one-quarter box">
+            <img src="/Assets/IMAGES/Placeholder-Image-400.webp">
+            <p class="title">pet</p>
+            <p class="subtitle">Subtitle</p>
+        </div>
+        <div class="column is-one-quarter box">
+            <img src="/Assets/IMAGES/Placeholder-Image-400.webp">
+            <p class="title">pet</p>
+            <p class="subtitle">Subtitle</p>
+        </div>
+    </div>
+
+<!--Filter Modal-->
+<div id="filter-page" class="modal">
+    <div class="modal-background"></div>
+    
+    <div class="modal-content">
+      <div class="box">
+        <p class="has-text-centered is-size-3">Select Your Preferences</p>
+        <form class="has-text-centered" action="submit">
+          <label class="is-size-4" for="type">Species:</label> 
+          <select class="mb-3 is-size-6" name="species">
+                <option value=""></option>
+                <option value="">Dog</option>
+                <option value="">Cat</option>
+                <option value="">Others</option>
+            </select>
+            <br>
+            <label class="is-size-4" for="breed">Breed:</label>
+            <input class="mb-3 is-size-6" name="breed" type="text"></input>
+            <br>
+            <label class="is-size-4" for="age">Age:</label>
+            <select class="mb-3 is-size-6" name="age" id="">
+                <option value=""></option>
+                <option value="">Baby</option>
+                <option value="">Young</option>
+                <option value="">Adult</option>
+                <option value="">Old</option>
+            </select>
+            <br>
+            <label class="is-size-4" for="size">Size:</label>
+            <select class="mb-3 is-size-6" name="size">
+                <option value=""></option>
+                <option value="">Small</option>
+                <option value="">Mid</option>
+                <option value="">Big</option>
+                <option value="">XL</option>
+            </select>
+            <br>
+            <label class="is-size-4" for="gender">Gender:</label>
+            <select class="mb-3 is-size-6" name="gender" id="">
+                <option value=""></option>
+                <option value="">Male<option>
+                <option value="">Female</option>
+            </select>
+            <br>
+            <label class="is-size-4" for="coatColor">Color:</label>
+            <input class="mb-3" type="text" name="color" id=""></input>
+            <br>
+            <label class="is-size-4" for="hairLength">Coat Length:</label>
+            <select class="mb-3 is-size-6" name="coat" id="">
+                <option value=""></option>
+                <option value="">Short</option>
+                <option value="">Long</option>
+                <option value="">Hypoallergenic</option>
+            </select>
+            <br>
+            <label class="mb-3 is-size-4"for="spay-neuter">Spayed/Neutered:</label>
+            <input class="mb-3" type="checkbox" name="spay-neuter" id="spay-neuter"> 
+            <br>
+            <label class="mb-3 is-size-4"for="house-trained">House Trained:</label>
+            <input class="mb-3" type="checkbox" name="house-trained" id="house-trained">
+            <br>
+            <label class="mb-3 is-size-4"for="declawed">Declawed:</label>
+            <input class="mb-3" type="checkbox" name="declawed" id="declawed">
+            <br>
+            <label class="mb-3 is-size-4"for="special-needs">Special Needs:</label>
+            <input class="mb-3" type="checkbox" name="special-needs" id="special-needs">
+            <br>
+            <label class="mb-3 is-size-4"for="shots">Shots:</label>
+            <input class="mb-3" type="checkbox" name="shots" id="shots">
+            <br>
+            <label class="mb-3 is-size-4"for="good-with-kids">Good with Children:</label>
+            <input class="mb-3" type="checkbox" name="good-with-kids" id="good-with-kids">  
+            <br>
+            <label class="mb-3 is-size-4" for="good-with-cats">Good with Cats:</label>
+            <input class="mb-3" type="checkbox" name="good-with-cats" id="good-with-cats"> 
+            <br>
+            <label class="mb-3 is-size-4" for="good-with-dogs">Good with Dogs:</label>
+            <input class="mb-3" type="checkbox" name="good-with-dogs" id="good-with-dogs">
+            <div class="buttons has-addons is-centered">
+                <button class="button has-addons is-centered has-text-weight-bold" id="filter-submit">Submit</button>
+            </div>
+            </form>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+<!-- Favorite Modal -->
+<div id="favorite-page" class="modal">
+    <div class="modal-background"></div>
+  
+    <div class="modal-content">
+      <div class="box" id="fav-background">
+          <div class="tile is ancestor">
+            <div class="tile is-vertical">
+              <h1 class="title has-text-centered is-1 has-text-white has-text-weight-bold">Favorites</h1>
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p id="randomname" class="title has-text-centered">
+                    Pet Name 1
+                    <button class="button is-link is-pulled-right" data-target="favorite-page">
+                      <ion-icon name="paw-outline"></ion-icon> 
+                    </button>
+                  </p>
+                  <div class="columns is-flex is-centered">
+                    <figure>
+                        <a id="" href="" target=""><img id="" src="./Assets/IMAGES/pet-filler-img.jpg" alt="temp"></a>
+                    </figure>
+                    </div>
+                </article>
+              </div>
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p id="randomname" class="title has-text-centered">
+                    Pet Name 2
+                    <button class="button is-link is-pulled-right" data-target="favorite-page">
+                      <ion-icon name="paw-outline"></ion-icon> 
+                    </button>
+                  </p>
+                  <div class="columns is-flex is-centered">
+                    <figure>
+                        <a id="" href="" target=""><img id="" src="./Assets/IMAGES/pet-filler-img.jpg" alt="temp"></a>
+                    </figure>
+                    </div>
+                </article>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+<html style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
+<body style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/@petfinder/petfinder-js/dist/petfinder.min.js"></script>
+<script src="./Assets/JS/search-results.js"></script>
+<script src="./Assets/JS/app.js"></script>
+
+</html>
