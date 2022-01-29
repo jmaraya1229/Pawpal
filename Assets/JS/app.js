@@ -59,9 +59,26 @@ async function getpics() {
 
   //   console.log(randomphoto);
 
-  document.getElementById("random-pic").src = pic1.photos[0].medium;
-  document.getElementById("dog-pic").src = pic2.photos[0].medium;
-  document.getElementById("cat-pic").src = pic3.photos[0].medium;
+  console.log(randompic)
+
+  if (pic1.photos.length == 0) {
+    document.getElementById("random-pic").src = ("./Assets/IMAGES/pet-filler-img.jpg");
+  } else {
+    document.getElementById("random-pic").src = pic1.photos[0].medium;
+  }
+
+  if (pic2.photos.length == 0) {
+    document.getElementById("dog-pic").src = ("./Assets/IMAGES/pet-filler-img.jpg");
+  } else {
+    document.getElementById("dog-pic").src = pic2.photos[0].medium;
+  }
+
+  if (pic3.photos.length == 0) {
+    document.getElementById("cat-pic").src = ("./Assets/IMAGES/pet-filler-img.jpg");
+  } else {
+    document.getElementById("cat-pic").src = pic3.photos[0].medium;
+  }
+
 }
 
 async function search() {
