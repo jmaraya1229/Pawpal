@@ -154,7 +154,8 @@ async function search() {
 test() 
   // console.log(results);
 }
-let form = document.getElementById("searchform");
+
+let form = document.getElementById("searchbutton");
 form.addEventListener("submit", search);
 // function test() {
 //   console.log(results.animals[0])
@@ -210,4 +211,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+ 
+let filteredResults = [];
 
+console.log(document.getElementById("search-filters"))
+
+let filterSubmission = document.getElementById("search-filters")
+filterSubmission.addEventListener("submit", filterResults)
+console.log(filterSubmission.species.value)
+
+function filterResults(){
+  let filters = {
+    type: filterSubmission.species.value,
+    breeds: {
+      primary: filterSubmission.breed.value,
+    },
+    colors:{
+      primary: filterSubmission.color.value,
+    },
+    age: filterSubmission.age.value,
+    gender: filterSubmission.gender.value,
+    size: filterSubmission.size.value,
+    coat: filterSubmission.coat.value,
+    attributes: {
+      spayed_neutered: filterSubmission.spay-neuter.value,
+      house_trained: filterSubmission.house-trained.value,
+      declawed: filterSubmission.declawed.value,
+      special_needs: filterSubmission.special-needs.value,
+      shots_current: filterSubmission.shots.value,
+    },
+    environment: {
+      children: filterSubmission.goodkids.value,
+      dogs: filterSubmission.gooddogs.value,
+      cats: filterSubmission.goodcats.value,
+    }
+}
+console.log(filters)
+
+}
