@@ -18,8 +18,8 @@ let results = {};
 // secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
 
 const client = new petfinder.Client({
-  apiKey: "c4Kr5BRTXhQEhXoQweeNHLhO43gdfD4sCbYy6vD9s93RuRluyB",
-  secret: "LpRMDqN9WakbzJjstuJ4TxzvQDg6Qk9o9I60R1na",
+  apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
+  secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
 });
 
 async function getpics() {
@@ -35,7 +35,7 @@ async function getpics() {
   let pic1 = randompic.data.animals[0];
   let pic2 = randompic.data.animals[1];
   let pic3 = randompic.data.animals[2];
-  console.log(pic1);
+  // console.log(pic1);
 
   document.getElementById("randomlink").href = pic1.url;
 
@@ -59,7 +59,7 @@ async function getpics() {
 
   //   console.log(randomphoto);
 
-  console.log(randompic)
+  // console.log(randompic)
 
   if (pic1.photos.length == 0) {
     document.getElementById("random-pic").src = ("./Assets/IMAGES/pet-filler-img.jpg");
@@ -130,6 +130,10 @@ async function search() {
           animal.photos[0].medium = "./Assets/IMAGES/Placeholder-Image-400.webp"
       }
       // append cards for results
+      document.getElementById("pageName").innerHTML = "Available pets"
+        $('#randomCard1').hide();
+        $('#randomCard2').hide();
+        $('#randomCard3').hide();
       resultscontainer.innerHTML = resultscontainer.innerHTML + 
         `
         <div id="${animal.id}" class="column box pet-card has-text-centered is-justify-content-center is-one-quarter">
@@ -152,9 +156,9 @@ test()
 }
 let form = document.getElementById("searchform");
 form.addEventListener("submit", search);
-function test() {
-  console.log(results.animals[0])
-}
+// function test() {
+//   console.log(results.animals[0])
+// }
 // trent's code
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
@@ -176,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
   (document.querySelectorAll(".js-modal-trigger") || []).forEach(($trigger) => {
     const modal = $trigger.dataset.target;
     const $target = document.getElementById(modal);
-    console.log($target);
+    // console.log($target);
 
     $trigger.addEventListener("click", () => {
       openModal($target);
@@ -206,3 +210,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+

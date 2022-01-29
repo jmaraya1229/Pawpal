@@ -7,6 +7,8 @@
     <title>Adoptable Pets!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="./Assets/CSS/styles.css">
+    <link rel="stylesheet" href="./Assets/CSS/search-results.css">
+
 </head>
 
 <body class="has-background-light">
@@ -29,7 +31,8 @@
           </select>
         </div>
       </div>
-      <button type="submit" class="button">Search</button>
+      <button id="search" type="submit" class="button">Search</button>
+      <button class="button js-modal-trigger" aria-label="menu" data-target="modal-js-example">Filters</button>
       </form>
   <div class="navbar-end">
 
@@ -53,7 +56,7 @@
   <section class="hero is-small">
     <div class="hero-body">
       <div class="hero-body">
-        <h1 class="title has-text-centered is-1 has-text-white has-text-weight-bold is-size-3-mobile">
+        <h1 id="pageName" class="title has-text-centered is-1 has-text-white has-text-weight-bold is-size-3-mobile">
           Sponsored Pets
         </h1>
       </div>
@@ -61,7 +64,7 @@
   </section>
 
     <!--Dog pic-->
-  <div class="tile is-ancestor">
+  <div id="randomCard1"  class="tile is-ancestor">
     <div class="tile is-parent">
       <article class="tile is-child box">
         <button class="button is-link is-pulled-right" data-target="favorite-page" id="fav-pet-1">
@@ -80,7 +83,7 @@
     </div>
 
     <!--Cat Pic-->
-    <div class="tile is-parent">
+    <div id="randomCard2" class="tile is-parent">
       <article class="tile is-child box">
         <button class="button is-link is-pulled-right" data-target="favorite-page" id="fav-pet-2">
           <ion-icon name="paw-outline"></ion-icon> 
@@ -97,7 +100,7 @@
     </div>
 
     <!--Random Animal-->
-    <div class="tile is-parent">
+    <div id="randomCard3" class="tile is-parent">
       <article class="tile is-child box">
         <button class="button is-link is-pulled-right" data-target="favorite-page" id="fav-pet-3">
           <ion-icon name="paw-outline"></ion-icon> 
@@ -114,6 +117,8 @@
     </div>
   </div>
 
+  <div class="columns is-multiline is-centered" id="populate-search-results"></div>
+
 <!-- Favorite Modal -->
 <div id="favorite-page" class="modal">
   <div class="modal-background"></div>
@@ -123,6 +128,7 @@
         <div class="tile is ancestor">
           <div class="tile is-vertical">
             <h1 class="title has-text-centered is-1 has-text-white has-text-weight-bold">Favorites</h1>
+
             <div class="tile is-parent">
               <article class="tile is-child box">
                 <p id="randomname" class="title has-text-centered">
@@ -158,8 +164,104 @@
     </div>
   </div>
 
+  <div class="columns is-multiline is-mobile is-centered " id="populate-search-results">
+
+  </div>
   <button class="modal-close is-large" aria-label="close"></button>
 </div>
+
+<div id="modal-js-example" class="modal">
+  <div class="modal-background"></div>
+  
+  <div class="modal-content">
+    <div class="box">
+      <p class="has-text-centered is-size-3">Select Your Preferences</p>
+      <form class="has-text-centered" action="submit">
+        <label class="is-size-4" for="type">Species:</label> 
+        <select class="mb-3 is-size-6" name="species">
+              <option value=""></option>
+              <option value="">Dog</option>
+              <option value="">Cat</option>
+              <option value="">Others</option>
+          </select>
+          <br>
+          <label class="is-size-4" for="breed">Breed:</label>
+          <input class="mb-3 is-size-6" name="breed" type="text"></input>
+          <br>
+          <label class="is-size-4" for="age">Age:</label>
+          <select class="mb-3 is-size-6" name="age" id="">
+              <option value=""></option>
+              <option value="">Baby</option>
+              <option value="">Young</option>
+              <option value="">Adult</option>
+              <option value="">Old</option>
+          </select>
+          <br>
+          <label class="is-size-4" for="size">Size:</label>
+          <select class="mb-3 is-size-6" name="size">
+              <option value=""></option>
+              <option value="">Small</option>
+              <option value="">Mid</option>
+              <option value="">Big</option>
+              <option value="">XL</option>
+          </select>
+          <br>
+          <label class="is-size-4" for="gender">Gender:</label>
+          <select class="mb-3 is-size-6" name="gender" id="">
+              <option value=""></option>
+              <option value="">Male<option>
+              <option value="">Female</option>
+          </select>
+          <br>
+          <label class="is-size-4" for="coatColor">Color:</label>
+          <input class="mb-3" type="text" name="color" id=""></input>
+          <br>
+          <label class="is-size-4" for="hairLength">Coat Length:</label>
+          <select class="mb-3 is-size-6" name="coat" id="">
+              <option value=""></option>
+              <option value="">Short</option>
+              <option value="">Long</option>
+              <option value="">Hypoallergenic</option>
+          </select>
+          <br>
+          <label class="mb-3 is-size-4"for="spay-neuter">Spayed/Neutered:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="spay-neuter" id="spay-neuter"> 
+          <br>
+          <label class="mb-3 is-size-4"for="house-trained">House Trained:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="house-trained" id="house-trained">
+          <br>
+          <label class="mb-3 is-size-4"for="declawed">Declawed:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="declawed" id="declawed">
+          <br>
+          <label class="mb-3 is-size-4"for="special-needs">Special Needs:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="special-needs" id="special-needs">
+          <br>
+          <label class="mb-3 is-size-4"for="shots">Shots:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="shots" id="shots">
+          <br>
+          <label class="mb-3 is-size-4"for="good-with-kids">Good with Children:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="good-with-kids" id="good-with-kids">  
+          <br>
+          <label class="mb-3 is-size-4" for="good-with-cats">Good with Cats:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="good-with-cats" id="good-with-cats"> 
+          <br>
+          <label class="mb-3 is-size-4" for="good-with-dogs">Good with Dogs:</label>
+          <br>
+          <input class="mb-3" type="checkbox" name="good-with-dogs" id="good-with-dogs">
+          <div class="buttons has-addons is-centered">
+              <button class="button has-addons is-centered has-text-weight-bold" id="filter-submit">Submit</button>
+          </div>
+          </form>
+              </div>
+          </div>
+      </div>
 
 <html style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
 <body style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
