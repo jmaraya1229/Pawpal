@@ -101,7 +101,7 @@ async function search() {
   event.preventDefault();
   let searchstring = document.getElementById("searchstring").value;
   let distance = document.getElementById("distance").value;
-  let locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=${searchstring}&limit=5&appid=${geoAPIKey}`;
+  let locationURL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchstring}&limit=5&appid=${geoAPIKey}`;
   let location = await (await fetch(locationURL)).json();
 
   let lat = location[0].lat;
