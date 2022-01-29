@@ -33,6 +33,9 @@
       </form>
   <div class="navbar-end">
 
+    <!-- Icon for when pet is put on favorites
+    <ion-icon name="paw"></ion-icon> -->
+
     <!-- Desktop Favorite Button -->
     <button class="button is-link is-medium mt-2 js-modal-trigger is-hidden-mobile" data-target="favorite-page" id="favorite-button">
     <ion-icon name="paw-outline"></ion-icon> 
@@ -40,7 +43,7 @@
     </button>
 
       <!-- Mobile Favorite Button -->
-      <button class="button is-link mt-2 is-pulled-right is-hidden-desktop" data-target="favorite-page" id="favorite-button">
+      <button class="button is-link mt-2 is-pulled-right is-hidden-desktop js-modal-trigger" data-target="favorite-page" id="favorite-button">
         <ion-icon name="paw-outline"></ion-icon> 
       </button>
     </div>
@@ -61,7 +64,7 @@
   <div class="tile is-ancestor">
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <button class="button is-link is-pulled-right" data-target="favorite-page" id="favorite-pet-button">
+        <button class="button is-link is-pulled-right" data-target="favorite-page" id="fav-pet-1">
           <ion-icon name="paw-outline"></ion-icon> 
         </button>
        <br><br><br>
@@ -77,9 +80,9 @@
     </div>
 
     <!--Cat Pic-->
-    <div class="tile is-parent ">
+    <div class="tile is-parent">
       <article class="tile is-child box">
-        <button class="button is-link is-pulled-right" data-target="favorite-page" id="favorite-pet-button">
+        <button class="button is-link is-pulled-right" data-target="favorite-page" id="fav-pet-2">
           <ion-icon name="paw-outline"></ion-icon> 
         </button>
         <br><br><br>
@@ -96,7 +99,7 @@
     <!--Random Animal-->
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <button class="button is-link is-pulled-right" data-target="favorite-page" id="favorite-pet-button">
+        <button class="button is-link is-pulled-right" data-target="favorite-page" id="fav-pet-3">
           <ion-icon name="paw-outline"></ion-icon> 
         </button>
         <br><br><br>
@@ -111,8 +114,56 @@
     </div>
   </div>
 
-<!--Modal-->
-<div id="modal-js-example" class="modal">
+<!-- Favorite Modal -->
+<div id="favorite-page" class="modal">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box" id="fav-background">
+        <div class="tile is ancestor">
+          <div class="tile is-vertical">
+            <h1 class="title has-text-centered is-1 has-text-white has-text-weight-bold">Favorites</h1>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p id="randomname" class="title has-text-centered">
+                  Pet Name 1
+                  <button class="button is-link is-pulled-right" data-target="favorite-page">
+                    <ion-icon name="paw-outline"></ion-icon> 
+                  </button>
+                </p>
+                <div class="columns is-flex is-centered">
+                  <figure>
+                      <a id="" href="" target=""><img id="" src="./Assets/IMAGES/pet-filler-img.jpg" alt="temp"></a>
+                  </figure>
+                  </div>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p id="randomname" class="title has-text-centered">
+                  Pet Name 2
+                  <button class="button is-link is-pulled-right" data-target="favorite-page">
+                    <ion-icon name="paw-outline"></ion-icon> 
+                  </button>
+                </p>
+                <div class="columns is-flex is-centered">
+                  <figure>
+                      <a id="" href="" target=""><img id="" src="./Assets/IMAGES/pet-filler-img.jpg" alt="temp"></a>
+                  </figure>
+                  </div>
+              </article>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+<!--Filter Modal-->
+<!-- <div id="modal-js-example" class="modal">
 <div class="modal-background"></div>
 
 <div class="modal-content">
@@ -199,7 +250,7 @@
         <input class="mb-3" type="checkbox" name="good-with-dogs" id="good-with-dogs">
         </form>
   </div>
-</div>
+</div> -->
 
 <html style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
 <body style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
