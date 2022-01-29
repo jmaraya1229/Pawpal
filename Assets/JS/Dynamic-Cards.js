@@ -4,7 +4,7 @@
 // let token = new petfinder.Client({apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4", secret:"AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD"})
 
 let geoAPIKey = "adbcd1fea76a22fc844c199455b4e260";
-let results = {};
+
 // will's petfinder creds:
 // apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4",
 // secret: "AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD",
@@ -21,6 +21,7 @@ const client = new petfinder.Client({
   apiKey: "c4Kr5BRTXhQEhXoQweeNHLhO43gdfD4sCbYy6vD9s93RuRluyB",
   secret: "LpRMDqN9WakbzJjstuJ4TxzvQDg6Qk9o9I60R1na",
 });
+
 
 async function getpics() {
   let randompic = await client.animal.search({
@@ -59,7 +60,6 @@ async function getpics() {
 
   //   console.log(randomphoto);
 
-  console.log(randompic)
 
   if (pic1.photos.length == 0) {
     document.getElementById("random-pic").src = ("./Assets/IMAGES/pet-filler-img.jpg");
@@ -95,8 +95,10 @@ async function getpics() {
     document.getElementById("catdesc").textContent = "Adopt me!";
   }  else {
     document.getElementById("catdesc").textContent = pic3.description;
+  }
+
 }
-}
+
 async function search() {
   event.preventDefault();
   let searchstring = document.getElementById("searchstring").value;
@@ -109,52 +111,64 @@ async function search() {
 
   let latlon = lat + ", " + lon;
   let page = 1;
+  let results = "";
   do {
     results = await client.animal.search({
-      location: latlon,
-      distance: distance,
-      status: "adoptable",
-      page,
-      limit: 100,
-    });
-    results = results.data
-    let resultscontainer = document.getElementById("populate-search-results");
-    // let animalID = (page - 1) * 100;
-    // console.log(animals)
-    results.animals.forEach(function (animal) {
-      // console.log(` -- ${++animalID}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
-      
-      // handle missing photo
-      if (animal.photos[0] === undefined) {
-          animal.photos = [{"medium":""}]
-          animal.photos[0].medium = "./Assets/IMAGES/Placeholder-Image-400.webp"
-      }
-      // append cards for results
-      resultscontainer.innerHTML = resultscontainer.innerHTML + 
-        `
-        <div id="${animal.id}" class="column box pet-card has-text-centered is-justify-content-center">
-        <div class="title has-text-centered is-size-2">${animal.name}</div>
-        <div class="pet-pic">
-        <a href="${animal.url}" target="_blank"><img class="" src="${animal.photos[0].medium}"></a>
-        <img class="fav-btn is-justify-content-center" src="./Assets/IMAGES/heart-outline.svg">
-        </div>
-        <p>${animal.description}</p>
-        </div>
-        `
-    });
-    page++;
-  } while (
-    results.pagination &&
-    results.pagination.total_pages >= page
-  );
-test() 
-  // console.log(results);
+    location: latlon,
+    distance: distance,
+    status: "adoptable",
+    page,
+    limit: 100,
+  });
+    let animalID = (page - 1) * 100;
+    results.data.animals.forEach(function(animal) {
+        console.log(` -- ${++animalID}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
+  }); 
+     page++;
+    } while(results.data.pagination && results.data.pagination.total_pages >= page);
+       
+    console.log(results);
 }
 let form = document.getElementById("searchform");
 form.addEventListener("submit", search);
-function test() {
-  console.log(results.animals[0])
-}
+
+// looping through and pulling info from wills code
+
+var displayResults = function (results) {
+  if (results.length === 0) {
+    repoContainerEl.textContent = 'No animals found.';
+    return;
+  }
+  for (var i = 0; i < results.length; i++) {
+    var animalName = results[i] + '/' + results[i].name;
+
+    var animalEl = document.createElement('a');
+    animalEl.classList = 'list-item flex-row justify-space-between align-center';
+    animalEl.setAttribute('href', './single-repo.html?repo=' + animalName);
+
+    var titleEl = document.createElement('span');
+    titleEl.textContent = repoName;
+
+    animalEl.appendChild(titleEl);
+
+    var statusEl = document.createElement('span');
+    statusEl.classList = 'flex-row align-center';
+
+    if (results[i].open_issues_count > 0) {
+      statusEl.innerHTML =
+        "<i class='fas fa-times status-icon icon-danger'></i>" + results[i].open_issues_count + ' issue(s)';
+    } else {
+      statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
+    }
+
+    animalEl.appendChild(statusEl);
+
+    repoContainerEl.appendChild(animalEl);
+  }
+};
+displayResults()
+console.log(results)
+
 // trent's code
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
@@ -206,3 +220,57 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// Jess code for Favorite modal button
+document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+    console.log($target);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    const e = event || window.event;
+
+    if (e.keyCode === 27) { // Escape key
+      closeAllModals();
+    }
+  });
+});
+
+var feed = {created_at: "2017-03-14T01:00:32Z", entry_id: 33358, field1: "4", field2: "4", field3: "0"};
+
+var data = [0];
+data.push(feed);
+
+console.log(data);
