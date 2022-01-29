@@ -79,8 +79,24 @@ async function getpics() {
     document.getElementById("cat-pic").src = pic3.photos[0].medium;
   }
 
-}
+  if (pic1.description == "" || pic1.description == null) {
+    document.getElementById("randomdesc").textContent = "Adopt me!";
+  }  else {
+    document.getElementById("randomdesc").textContent = pic1.description;
+  }
 
+  if (pic2.description == "" || pic2.description == null) {
+    document.getElementById("dogdesc").textContent = "Adopt me!";
+  }  else {
+    document.getElementById("dogdesc").textContent = pic2.description;
+  }
+
+  if (pic3.description == "" || pic3.description == null) {
+    document.getElementById("catdesc").textContent = "Adopt me!";
+  }  else {
+    document.getElementById("catdesc").textContent = pic3.description;
+}
+}
 async function search() {
   event.preventDefault();
   let searchstring = document.getElementById("searchstring").value;

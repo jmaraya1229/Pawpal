@@ -21,6 +21,14 @@ h1 {
   -webkit-text-stroke-color: black;
 }
 
+#fav-background {
+  background-color: lightskyblue;
+}
+
+.columns {
+  gap: 10px;
+}
+
 input[type=checkbox] {
     width:20px; 
     height:20px;
@@ -38,8 +46,8 @@ form input {
 
 form input,
 form select {
-  color: white;
-  background-color: gray;
+  color: black;
+  background-color: lightskyblue;
   height: 3rem;
 }
 
