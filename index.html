@@ -12,168 +12,104 @@
 <body class="has-background-light">
   <!--NavBar Start-->
   <nav class="navbar" role="navigation" aria-label="main navigation">
-    <!-- <div class="navbar-brand">
-      <a  role="button" class="navbar-burger js-modal-trigger" aria-label="menu" aria-expanded="false" data-target="modal-js-example">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
 
-
-  <!--search bar-->
-    <form id="searchform" class="field has-addons pl-5 pt-3">
+  <!-- search bar -->
+    <form id="searchform" class="field has-addons pl-5 pt-3 is-centered-mobile">
       <div class="control">
           <input id="searchstring" class="input" type="text" placeholder="Location e.g San Diego">
       </div>
       <div class="control">
-          <div class="select">
-              <select id="distance">
-                <option>Distance</option>
-                <option value="5">5 miles</option>
-                <option value="10">10 miles</option>
-                <option value="15">15 miles</option>
-                <option value="20">20 miles</option>
-              </select>
-          </div>
+        <div class="select">
+          <select id="distance">
+            <option>Distance</option>
+            <option value="5">5 miles</option>
+            <option value="10">10 miles</option>
+            <option value="15">15 miles</option>
+            <option value="20">20 miles</option>
+          </select>
+        </div>
       </div>
       <button type="submit" class="button">Search</button>
-    </form>
-    <div class="navbar-end">
-      <button class="button is-info is-medium mt-2 js-modal-trigger is-hidden-mobile" data-target="favorite-page" id="favorite-button">
-      <ion-icon name="paw-outline"></ion-icon> 
-        Favorites
+      </form>
+  <div class="navbar-end">
+
+    <!-- Desktop Favorite Button -->
+    <button class="button is-link is-medium mt-2 js-modal-trigger is-hidden-mobile" data-target="favorite-page" id="favorite-button">
+    <ion-icon name="paw-outline"></ion-icon> 
+      Favorites
+    </button>
+
+      <!-- Mobile Favorite Button -->
+      <button class="button is-link mt-2 is-pulled-right is-hidden-desktop" data-target="favorite-page" id="favorite-button">
+        <ion-icon name="paw-outline"></ion-icon> 
       </button>
     </div>
   </nav>
 
   <!--Header-->
-  <header class="is-capitalized is-centered has-text-centered is-size-2">
-    <h1>Sponsored Pets!</h1>
-  </header>
-<!-- 
-  Filter Side Bar
-  <div class="tile is-ancestor">
-    <aside class="column box is-3 is-narrow-mobile is-hidden-mobile has-text-left ml-4 ">
-      <form action="submit">
-          <h1 class="is-size-4 has-text-centered has-text-weight-bold">Filter results:</h1>
-          <label class="is-size-4" for="type">Species:</label> 
-          <select class="mb-3 is-size-6" name="species">
-              <option value=""></option>
-              <option value="">Dog</option>
-              <option value="">Cat</option>
-              <option value="">Others</option>
-          </select>
-          <br>
-          <label class="is-size-4" for="breed">Breed:</label>
-          <input class="mb-3 is-size-6" name="breed" type="text"></input>
-          <br>
-          <label class="is-size-4" for="age">Age:</label>
-          <select class="mb-3 is-size-6" name="age" id="">
-              <option value=""></option>
-              <option value="">Baby</option>
-              <option value="">Young</option>
-              <option value="">Adult</option>
-              <option value="">Old</option>
-          </select>
-          <br>
-          <label class="is-size-4" for="size">Size:</label>
-          <select class="mb-3 is-size-6" name="size">
-              <option value=""></option>
-              <option value="">Small</option>
-              <option value="">Mid</option>
-              <option value="">Big</option>
-              <option value="">XL</option>
-          </select>
-          <br>
-          <label class="is-size-4" for="gender">Gender:</label>
-          <select class="mb-3 is-size-6" name="gender" id="">
-              <option value=""></option>
-              <option value="">Male<option>
-              <option value="">Female</option>
-              <option value="">Unknown</option>
-          </select>
-          <br>
-          <label class="is-size-4" for="coatColor">Color:</label>
-          <input class="mb-3" type="text" name="color" id=""></input>
-          <br>
-          <label class="is-size-4" for="hairLength">Coat Length:</label>
-          <select class="mb-3 is-size-6" name="coat" id="">
-              <option value=""></option>
-              <option value="">Short</option>
-              <option value="">Long</option>
-              <option value="">Hypoallergenic</option>
-          </select>
-          <br>
-          <label class="mb-3 is-size-4"for="spay-neuter">Spayed/Neutered:</label>
-              <input class="mb-3" type="checkbox" name="spay-neuter" id="spay-neuter"> 
-          <br>
-          <label class="mb-3 is-size-4"for="house-trained">House Trained:</label>
-              <input class="mb-3" type="checkbox" name="house-trained" id="house-trained">
-          <br>
-          <label class="mb-3 is-size-4"for="declawed">Declawed:</label>
-              <input class="mb-3" type="checkbox" name="declawed" id="declawed">
-          <br>
-          <label class="mb-3 is-size-4"for="special-needs">Special Needs:</label>
-              <input class="mb-3" type="checkbox" name="special-needs" id="special-needs">
-          <br>
-          <label class="mb-3 is-size-4"for="shots">Shots:</label>
-              <input class="mb-3" type="checkbox" name="shots" id="shots">
-          <br>
-          <label class="mb-3 is-size-4"for="good-with-kids">Good with Children:</label>
-              <input class="mb-3" type="checkbox" name="good-with-kids" id="good-with-kids">  
-          <br>
-          <label class="mb-3 is-size-4" for="good-with-cats">Good with Cats:</label>
-              <input class="mb-3" type="checkbox" name="good-with-cats" id="good-with-cats"> 
-          <br>
-          <label class="mb-3 is-size-4" for="good-with-dogs">Good with Dogs:</label>
-              <input class="mb-3" type="checkbox" name="good-with-dogs" id="good-with-dogs">
-      </form>
-      <br>
-      <div class="buttons has-addons is-centered">
-          <button class="button has-addons is-centered has-text-weight-bold" id="filter-submit">Submit</button>
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="hero-body">
+        <h1 class="title has-text-centered is-1 has-text-white has-text-weight-bold is-size-3-mobile">
+          Sponsored Pets
+        </h1>
       </div>
-    </aside> -->
+    </div>
+  </section>
 
     <!--Dog pic-->
-    <div class="is-vcentered">
-      <div class="tile is-parent">
-      <article class="tile is-child box is-center">
-          <div class="columns is-flex is-centered">
-          <figure>
-              <a id="doglink" href="" target="_blank"><img id="dog-pic" src="" alt="temp"></a>
-          </figure>
-      </div>
-          <p id="dogname" class="title has-text-centered"></p>
-          <p id="dogdesc" class="subtitle has-text-centered"></p>
-      </article>
-      </div>
-<!--Cat Pic-->
-<div class="tile is-parent ">
-  <article class="tile is-child box">
-    <div class="columns is-flex is-centered">
-      <figure>
-          <a id="catlink" href="" target="_blank"><img id="cat-pic" src="" alt="temp"></a>
-      </figure>
-  </div>
-    <p id="catname" class="title has-text-centered"></p>
-    <p id="catdesc" class="subtitle has-text-centered"></p>
-  </article>
-</div>
-<!--Random Animal-->
-<div class="tile is-parent">
-  <article class="tile is-child box">
-    <div class="columns is-flex is-centered">
-      <figure>
-          <a id="randomlink" href="" target="_blank"><img id="random-pic" src="" alt="temp"></a>
-      </figure>
-  </div>
-    <p id="randomname" class="title has-text-centered"></p>
-    <p id="randomdesc" class="subtitle has-text-centered "></p>
-  </article>
-</div>
-</div>
-</div>
+  <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <button class="button is-link is-pulled-right" data-target="favorite-page" id="favorite-pet-button">
+          <ion-icon name="paw-outline"></ion-icon> 
+        </button>
+       <br><br><br>
+        <div class="columns is-flex is-centered">
 
+        <figure>
+            <a id="doglink" href="" target="_blank"><img id="dog-pic" src="" alt="temp"></a>
+        </figure>
+        </div>
+        <p id="dogname" class="title has-text-centered"></p>
+        <p id="dogdesc" class="subtitle has-text-centered"></p>
+      </article>
+    </div>
+
+    <!--Cat Pic-->
+    <div class="tile is-parent ">
+      <article class="tile is-child box">
+        <button class="button is-link is-pulled-right" data-target="favorite-page" id="favorite-pet-button">
+          <ion-icon name="paw-outline"></ion-icon> 
+        </button>
+        <br><br><br>
+        <div class="columns is-flex is-centered">
+          <figure>
+              <a id="catlink" href="" target="_blank"><img id="cat-pic" src="" alt="temp"></a>
+          </figure>
+          </div>
+        <p id="catname" class="title has-text-centered"></p>
+        <p id="catdesc" class="subtitle has-text-centered"></p>
+      </article>
+    </div>
+
+    <!--Random Animal-->
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <button class="button is-link is-pulled-right" data-target="favorite-page" id="favorite-pet-button">
+          <ion-icon name="paw-outline"></ion-icon> 
+        </button>
+        <br><br><br>
+        <div class="columns is-flex is-centered">
+          <figure>
+              <a id="randomlink" href="" target="_blank"><img id="random-pic" src="" alt="temp"></a>
+          </figure>
+          </div>
+        <p id="randomname" class="title has-text-centered"></p>
+        <p id="randomdesc" class="subtitle has-text-centered "></p>
+      </article>
+    </div>
+  </div>
 
 <!--Modal-->
 <div id="modal-js-example" class="modal">
@@ -265,8 +201,8 @@
   </div>
 </div>
 
-<button class="modal-close is-large" aria-label="close"></button>
-</div>
+<html style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
+<body style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
