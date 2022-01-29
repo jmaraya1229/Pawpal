@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
-
+        
         <!--search bar-->
         <form id="searchform" class="field has-addons pl-5 pt-3">
             <div class="control">
@@ -20,17 +20,17 @@
             <div class="control">
                 <div class="select">
                     <select id="distance">
-                      <option>Distance</option>
-                      <option value="5">5 miles</option>
-                      <option value="10">10 miles</option>
-                      <option value="15">15 miles</option>
-                      <option value="20">20 miles</option>
+                        <option>Distance</option>
+                        <option value="5">5 miles</option>
+                        <option value="10">10 miles</option>
+                        <option value="15">15 miles</option>
+                        <option value="20">20 miles</option>
                     </select>
                 </div>
             </div>
             <button type="submit" class="button">Search</button>
             <button class="button js-modal-trigger" aria-label="menu" data-target="modal-js-example">Filters</button>
-         </form>
+            </form>
 
         <!--favorite button-->
         <div class="navbar-end">
@@ -39,11 +39,23 @@
                 Favorites
             </button>        
         </div>
+
+    <!-- Mobile Favorite Button -->
+    <button class="button is-info is-pulled-right mt-2 is-hidden-desktop" data-target="favorite-page" id="favorite-button">
+        <ion-icon name="paw-outline"></ion-icon> 
+      </button>
     </nav>
 
-    <header class="is-centered has-text-centered is-size-2">
-        <h1>Search Results</h1>
-    </header>
+  <!--Header-->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="hero-body">
+        <h1 class="title has-text-centered is-1 has-text-white has-text-weight-bold is-size-3-mobile">
+          Results
+        </h1>
+      </div>
+    </div>
+  </section>
 
     <!--Filter Side Bar-->
   <!-- <div class="tile is-ancestor">
@@ -167,6 +179,7 @@
             </div>
         </div>
     </div>
+
     <!--Modal-->
 <div id="modal-js-example" class="modal">
     <div class="modal-background"></div>
@@ -259,6 +272,9 @@
             </form>
       </div>
     </div>
+
+<html style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
+<body style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
