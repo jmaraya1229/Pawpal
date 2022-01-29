@@ -60,7 +60,6 @@ async function getpics() {
 
   //   console.log(randomphoto);
 
-  console.log(randompic)
 
   if (pic1.photos.length == 0) {
     document.getElementById("random-pic").src = ("./Assets/IMAGES/pet-filler-img.jpg");
@@ -78,6 +77,24 @@ async function getpics() {
     document.getElementById("cat-pic").src = ("./Assets/IMAGES/pet-filler-img.jpg");
   } else {
     document.getElementById("cat-pic").src = pic3.photos[0].medium;
+  }
+
+  if (pic1.description == "" || pic1.description == null) {
+    document.getElementById("randomdesc").textContent = "Adopt me!";
+  }  else {
+    document.getElementById("randomdesc").textContent = pic1.description;
+  }
+
+  if (pic2.description == "" || pic2.description == null) {
+    document.getElementById("dogdesc").textContent = "Adopt me!";
+  }  else {
+    document.getElementById("dogdesc").textContent = pic2.description;
+  }
+
+  if (pic3.description == "" || pic3.description == null) {
+    document.getElementById("catdesc").textContent = "Adopt me!";
+  }  else {
+    document.getElementById("catdesc").textContent = pic3.description;
   }
 
 }
@@ -110,8 +127,6 @@ async function search() {
      page++;
     } while(results.data.pagination && results.data.pagination.total_pages >= page);
        
-      
-  
     console.log(results);
 }
 let form = document.getElementById("searchform");
@@ -164,6 +179,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (e.keyCode === 27) {
       // Escape key
+      closeAllModals();
+    }
+  });
+});
+
+// Jess code for Favorite modal button
+document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+    console.log($target);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    const e = event || window.event;
+
+    if (e.keyCode === 27) { // Escape key
       closeAllModals();
     }
   });

@@ -1,12 +1,12 @@
 body {
-  background-image: url('./Assets/IMAGES/paw-background.jpg');
+  background-image: './Assets/IMAGES/paw-background.jpg';
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
 }
 
 html {
-  background-image: url('./Assets/IMAGES/paw-background.jpg');
+  background-image: './Assets/IMAGES/paw-background.jpg';
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -20,12 +20,10 @@ h1 {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
-/* 
-#favorite-pet-button {
-  position: relative;
-  top: 0;
-  right:0;
-} */
+
+#fav-background {
+  background-color: lightskyblue;
+}
 
 .is-vcentered {
   align-items: center;
