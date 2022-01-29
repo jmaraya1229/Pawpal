@@ -4,7 +4,7 @@
 // let token = new petfinder.Client({apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4", secret:"AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD"})
 
 let geoAPIKey = "adbcd1fea76a22fc844c199455b4e260";
-
+let results = {};
 // will's petfinder creds:
 // apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4",
 // secret: "AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD",
@@ -76,7 +76,6 @@ async function search() {
 
   let latlon = lat + ", " + lon;
   let page = 1;
-  let results = "";
   do {
     results = await client.animal.search({
       location: latlon,
@@ -85,12 +84,13 @@ async function search() {
       page,
       limit: 100,
     });
+    results = results.data
     let resultscontainer = document.getElementById("populate-search-results");
-    let animalID = (page - 1) * 100;
-
-    results.data.animals.forEach(function (animal) {
+    // let animalID = (page - 1) * 100;
+    // console.log(animals)
+    results.animals.forEach(function (animal) {
       // console.log(` -- ${++animalID}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
-
+      
       // handle missing photo
       if (animal.photos[0] === undefined) {
           animal.photos = [{"medium":""}]
@@ -111,15 +111,17 @@ async function search() {
     });
     page++;
   } while (
-    results.data.pagination &&
-    results.data.pagination.total_pages >= page
+    results.pagination &&
+    results.pagination.total_pages >= page
   );
-
-  console.log(results);
+test() 
+  // console.log(results);
 }
 let form = document.getElementById("searchform");
 form.addEventListener("submit", search);
-
+function test() {
+  console.log(results.animals[0])
+}
 // trent's code
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal

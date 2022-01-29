@@ -44,7 +44,6 @@ form select option {
   position: absolute;
   bottom: 10px;
   left: 10px;
-  z-index: 100;
 }
 
 .fav-btn:hover {
