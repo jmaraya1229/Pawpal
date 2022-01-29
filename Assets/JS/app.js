@@ -155,11 +155,11 @@ test()
   // console.log(results);
 }
 
-let form = document.getElementById("searchbutton");
+let form = document.getElementById("searchform");
 form.addEventListener("submit", search);
-// function test() {
-//   console.log(results.animals[0])
-// }
+function test() {
+  console.log(results.animals[0])
+}
 // trent's code
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
