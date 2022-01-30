@@ -101,7 +101,7 @@ async function search() {
   event.preventDefault();
   let searchstring = document.getElementById("searchstring").value;
   let distance = document.getElementById("distance").value;
-  let locationURL = `http://api.openweathermap.org/geo/1.0/direct?q=${searchstring}&limit=5&appid=${geoAPIKey}`;
+  let locationURL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchstring}&limit=5&appid=${geoAPIKey}`;
   let location = await (await fetch(locationURL)).json();
 
   let lat = location[0].lat;
@@ -151,7 +151,7 @@ test()
   // console.log(results);
 }
 
-let form = document.getElementById("searchbutton");
+let form = document.getElementById("searchform");
 form.addEventListener("submit", search);
 
 function test() {
@@ -213,9 +213,9 @@ let filteredResults = [];
 
 console.log(document.getElementById("search-filters"))
 
-let filterSubmission = document.getElementById("search-filters")
-filterSubmission.addEventListener("submit", filterResults)
-console.log(filterSubmission.species.value)
+// let filterSubmission = document.getElementById("search-filters")
+// filterSubmission.addEventListener("submit", filterResults)
+// console.log(filterSubmission.species.value)
 
 function filterResults(){
   let filters = {

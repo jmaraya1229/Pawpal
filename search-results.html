@@ -10,10 +10,10 @@
 
 </head>
 <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar p-3" role="navigation" aria-label="main navigation">
         
         <!--search bar-->
-        <form id="searchform" class="field has-addons pl-5 pt-3">
+        <form id="searchform" class="is-vcentered field has-addons">
             <div class="control">
                 <input id="searchstring" class="input" type="text" placeholder="Location e.g San Diego">
             </div>
@@ -28,13 +28,13 @@
                     </select>
                 </div>
             </div>
-            <button id="searchbutton" type="submit" class="button">Search</button>
-            <button class="button js-modal-trigger" aria-label="menu" data-target="modal-js-example">Filters</button>
+            <button id="searchbutton" type="submit" class="is-link is-rounded button">Search</button>
+            <button type="menu" class="button is-rounded is-link js-modal-trigger" aria-label="menu" data-target="modal-js-example">Filters</button>
             </form>
 
         <!--favorite button-->
-        <div class="navbar-end">
-            <button class="button is-info is-medium mt-2 js-modal-trigger is-hidden-mobile" data-target="favorite-page" id="favorite-button">
+        <div class="navbar-end is-vcentered">
+            <button class="button is-link is-rounded is-medium js-modal-trigger is-hidden-mobile" data-target="favorite-page" id="favorite-button">
                 <ion-icon name="paw-outline"></ion-icon> 
                 Favorites
             </button>        
