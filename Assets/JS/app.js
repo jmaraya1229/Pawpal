@@ -2,9 +2,10 @@ var globalPets = [];
 let resultscontainer = document.getElementById("populate-search-results");
 let geoAPIKey = "adbcd1fea76a22fc844c199455b4e260";
 let results = {};
-
+let filteredResults = [];
 let searchform = document.getElementById("searchform");
 searchform.addEventListener("submit", search);
+
 
 const client = new petfinder.Client({
   apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
@@ -23,12 +24,15 @@ const client = new petfinder.Client({
 // apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
 // secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
 
+getpics();
+
 if (localStorage.getItem("favorites") !== null) {
   globalPets = JSON.parse(localStorage.getItem("favorites"));
   renderFav();
+  console.log(globalPets)
 }
 
-//pulls 3 newest pets added to petfinder on load
+//pulls 3 newest pets added to petfinder on pageload
 async function getpics() {
   results = await client.animal.search({
     photos: true,
@@ -70,51 +74,23 @@ async function getpics() {
 }
 //adds event listeners to favorite buttons
 function buildFavBtns() {
-  var savePetBtns = Array.from(document.getElementsByClassName("fav-btn"));
-  for (let i = 0; i <= savePetBtns.length; i++) {
-    savePetBtns[i].addEventListener("click", function (event) {
+  var favBtns = Array.from(document.getElementsByClassName("fav-btn"));
+  favBtns.forEach(function (favBtn) {
+    favBtn.addEventListener("click", function(event) {
       event.preventDefault();
       storePets(event);
-    });
-  }
+    })
+  })
+ 
 }
-//populates favorites modal
-function renderFav() {
-  let favContent = document.getElementById("fav-petcards");
-  favContent.innerHTML = "";
-  
-  for (i = 0; i < globalPets.length; i++) {
-    favContent.innerHTML =
-      favContent.innerHTML +
-      `
-    <div class="tile is-parent">
-      <div class="tile is-child box">
-        <p id="${globalPets[i].id}" class="title has-text-centered">
-        ${globalPets[i].name}
-          <button class="button is-link is-pulled-right" data-target="favorite-page">
-            <ion-icon name="paw-outline"></ion-icon> 
-          </button>
-        </p>
-        <div class="columns is-flex is-centered">
-          <figure>
-              <a href="${globalPets[i].URL} target="_blank"><img id="" src="${globalPets[i].photos[0].medium}"></a>
-          </figure>
-          <p>${globalPets[i].description}</p>
-        </div>
-      </div>
-    </div>
-    `;
-  }
-}
-
 // stores favs locally
 function storePets(event) {
-  console.log(event.target);
+  // console.log(event.target);
   let eventParent = event.target.parentElement;
-  console.log(eventParent);
+  // console.log(eventParent);
   let petID = eventParent.parentElement.id;
   console.log(petID);
-  console.log(results);
+  // console.log(results);
   let animals = results.data.animals;
   let fav = animals.find(function (animal) {
     return animal.id === parseInt(petID);
@@ -123,12 +99,34 @@ function storePets(event) {
   globalPets.push(fav);
   localStorage.setItem("favorites", JSON.stringify(globalPets));
 }
+//populates favorites modal
 
-
-
-
-
-
+function renderFav() {
+  let favContent = document.getElementById("fav-petcards");
+  favContent.innerHTML = "";
+  globalPets.forEach(function (pet){
+    favContent.innerHTML = favContent.innerHTML =
+    favContent.innerHTML +
+   `
+ <div class="tile is-parent">
+   <div class="tile is-child box">
+     <p id="${pet.id}" class="title has-text-centered">
+     ${pet.name}
+       <button class="button is-link is-pulled-right" data-target="favorite-page">
+         <ion-icon name="paw-outline"></ion-icon> 
+       </button>
+     </p>
+     <div class="columns is-flex is-centered">
+       <figure>
+           <a href="${pet.URL} target="_blank"><img id="" src="${pet.photos[0].medium}"></a>
+       </figure>
+       <p>${pet.description}</p>
+     </div>
+   </div>
+ </div>
+ `;
+  })
+  }
 
 //handles search form 
 async function search(event) {
@@ -190,11 +188,20 @@ async function search(event) {
   buildFavBtns();
 }
 
-
 //logs 'hello'
 function test() {
   console.log("hello");
 }
+
+
+
+
+
+
+
+
+
+
 
 // trent's code
 document.addEventListener("DOMContentLoaded", () => {
@@ -249,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-let filteredResults = [];
+
 
 console.log(document.getElementById("search-filters"));
 
