@@ -1,14 +1,88 @@
 var globalPets = [];
+let resultscontainer = document.getElementById("populate-search-results");
+let geoAPIKey = "adbcd1fea76a22fc844c199455b4e260";
+let results = {};
+
+let searchform = document.getElementById("searchform");
+searchform.addEventListener("submit", search);
+
+const client = new petfinder.Client({
+  apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
+  secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
+});
+
+// will's petfinder creds:
+// apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4",
+// secret: "AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD",
+
+// trent's petfinder creds:
+// apiKey: "c4Kr5BRTXhQEhXoQweeNHLhO43gdfD4sCbYy6vD9s93RuRluyB",
+// secret: "LpRMDqN9WakbzJjstuJ4TxzvQDg6Qk9o9I60R1na",
+
+// jesse's petfinder creds:
+// apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
+// secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
+
 if (localStorage.getItem("favorites") !== null) {
   globalPets = JSON.parse(localStorage.getItem("favorites"));
-  console.log(globalPets);
   renderFav();
 }
+
+//pulls 3 newest pets added to petfinder on load
+async function getpics() {
+  results = await client.animal.search({
+    photos: true,
+    status: "adoptable",
+    limit: 3,
+  });
+  let i = 1;
+  console.log(results.data);
+
+  results.data.animals.forEach(function (animal) {
+    // console.log(` -- ${++animalID}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
+
+    // handle missing photo
+    if (animal.photos[0] == undefined) {
+      animal.photos = [{ medium: "" }];
+      animal.photos[0].medium = "./Assets/IMAGES/pet-filler-img.jpg";
+    }
+    // append cards for results
+    document.getElementById("pageName").innerHTML = "Newest Pets!";
+
+    resultscontainer.innerHTML =
+      resultscontainer.innerHTML +
+      `
+      <div id="${animal.id}" class="column box pet-card has-text-centered is-justify-content-center is-one-quarter">
+      <div class="title has-text-centered is-size-2">${animal.name}</div>
+      <div class="pet-pic">
+      <a href="${animal.url}" target="_blank"><img class="" src="${animal.photos[0].medium}"></a>
+      <img class="fav-btn md hydrated is-link is-pulled-right" data-target="favorite-page" name="add-fav" src="./Assets/IMAGES/md-paw.svg">
+      </div>
+      <p>${animal.description}</p>
+      </div>
+      `;
+
+    i++;
+  });
+    buildFavBtns();
+
+  
+}
+//adds event listeners to favorite buttons
+function buildFavBtns() {
+  var savePetBtns = Array.from(document.getElementsByClassName("fav-btn"));
+  for (let i = 0; i <= savePetBtns.length; i++) {
+    savePetBtns[i].addEventListener("click", function (event) {
+      event.preventDefault();
+      storePets(event);
+    });
+  }
+}
+//populates favorites modal
 function renderFav() {
   let favContent = document.getElementById("fav-petcards");
   favContent.innerHTML = "";
-  let defaultPic = "./Assets/IMAGES/pet-filler-img.jpg";
-  let defaultDesc = "Adopt Me!";
+  
   for (i = 0; i < globalPets.length; i++) {
     favContent.innerHTML =
       favContent.innerHTML +
@@ -33,79 +107,7 @@ function renderFav() {
   }
 }
 
-let resultscontainer = document.getElementById("populate-search-results");
-let geoAPIKey = "adbcd1fea76a22fc844c199455b4e260";
-let results = {};
-
-// will's petfinder creds:
-// apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4",
-// secret: "AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD",
-
-// trent's petfinder creds:
-// apiKey: "c4Kr5BRTXhQEhXoQweeNHLhO43gdfD4sCbYy6vD9s93RuRluyB",
-// secret: "LpRMDqN9WakbzJjstuJ4TxzvQDg6Qk9o9I60R1na",
-
-// jesse's petfinder creds:
-// apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
-// secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
-
-const client = new petfinder.Client({
-  apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
-  secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
-});
-
-async function getpics() {
-  results = await client.animal.search({
-    photos: true,
-    status: "adoptable",
-    limit: 3,
-  });
-  let i = 1;
-  console.log(results.data);
-
-  results.data.animals.forEach(function (animal) {
-    // console.log(` -- ${++animalID}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
-
-    // handle missing photo
-    if (animal.photos[0] == undefined) {
-      animal.photos = [{ medium: "" }];
-      animal.photos[0].medium = "./Assets/IMAGES/pet-filler-img.jpg";
-    }
-    // append cards for results
-    document.getElementById("pageName").innerHTML = "Available pets";
-
-    resultscontainer.innerHTML =
-      resultscontainer.innerHTML +
-      `
-      <div id="${animal.id}" class="column box pet-card has-text-centered is-justify-content-center is-one-quarter">
-      <div class="title has-text-centered is-size-2">${animal.name}</div>
-      <div class="pet-pic">
-      <a href="${animal.url}" target="_blank"><img class="" src="${animal.photos[0].medium}"></a>
-      <img class="fav-btn md hydrated is-link is-pulled-right" data-target="favorite-page" name="add-fav" src="./Assets/IMAGES/md-paw.svg">
-      </div>
-      <p>${animal.description}</p>
-      </div>
-      `;
-
-    i++;
-  });
-
-  buildFavBtns();
-}
-function buildFavBtns() {
-  var savePetBtns = Array.from(document.getElementsByClassName("fav-btn"));
-  console.log(savePetBtns);
-  for (let i = 0; i <= savePetBtns.length; i++) {
-    savePetBtns[i].addEventListener("click", function (event) {
-      event.preventDefault();
-      console.log(savePetBtns[i]);
-
-      storePets(event);
-    });
-  }
-}
-// To store fav's on index.html
-
+// stores favs locally
 function storePets(event) {
   console.log(event.target);
   let eventParent = event.target.parentElement;
@@ -120,22 +122,26 @@ function storePets(event) {
   console.log(fav);
   globalPets.push(fav);
   localStorage.setItem("favorites", JSON.stringify(globalPets));
-  //   var petData = {
-  //     picID: pic3.id,
-  //     picName: pic3.name,
-  //     picPic: pic3.photos,
-  //     picDesc: pic3.description,
-  //     picURL: pic3.url,
-  //   };
 }
 
+
+
+
+
+
+
+//handles search form 
 async function search(event) {
   event.preventDefault();
   let searchstring = document.getElementById("searchstring").value;
   let distance = document.getElementById("distance").value;
   let locationURL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchstring}&limit=5&appid=${geoAPIKey}`;
   let location = await (await fetch(locationURL)).json();
-
+  if (location[0] === undefined) {
+    document.getElementById("searchstring").value = "";
+    document.getElementById("searchstring").placeholder = "Invalid Entry";
+    return;
+  }
   let lat = location[0].lat;
   let lon = location[0].lon;
 
@@ -162,7 +168,7 @@ async function search(event) {
         animal.photos[0].medium = "./Assets/IMAGES/pet-filler-img.jpg";
       }
       // append cards for results
-      document.getElementById("pageName").innerHTML = "Available pets";
+      document.getElementById("pageName").innerHTML = "Search Results:";
       $("#randomCard1").hide();
       $("#randomCard2").hide();
       $("#randomCard3").hide();
@@ -184,10 +190,10 @@ async function search(event) {
   buildFavBtns();
 }
 
-let form = document.getElementById("searchform");
-form.addEventListener("submit", search);
+
+//logs 'hello'
 function test() {
-  console.log(results.animals[0]);
+  console.log("hello");
 }
 
 // trent's code
