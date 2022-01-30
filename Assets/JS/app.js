@@ -1,3 +1,6 @@
+var globalPets = [];
+
+
 // will's code
 //grant_type=client_credentials&client_id=du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4&client_secret=AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD https://api.petfinder.com/v2/oauth2/token
 
@@ -56,7 +59,6 @@ async function getpics() {
   document.getElementById("catdesc").textContent = pic3.description;
 
   //   console.log(randomanimal.primary_photo_cropped);
-
   //   console.log(randomphoto);
 
   // console.log(randompic)
@@ -95,8 +97,99 @@ async function getpics() {
     document.getElementById("catdesc").textContent = "Adopt me!";
   }  else {
     document.getElementById("catdesc").textContent = pic3.description;
+  }
+
+  // To store fav's on index.html
+  var savePetBtns = document.getElementsByTagName("button");
+  console.log(savePetBtns)
+  for (let i = 3; i <= 5 ; i++) {
+    savePetBtns[i].addEventListener("click", function(event) {
+    console.log(savePetBtns[i])
+    event.preventDefault ();
+    storePets(i);
+    });
+  }
+
+  function storePets(index) {
+    
+    index = index - 2;
+    console.log(index)
+    if (index == 1) {
+      var petData = {
+        picID: pic2.id, 
+        picName: pic2.name,
+        picPic: pic2.photos,
+        picDesc: pic2.description,
+        picURL: pic2.url,
+      }
+    } else if (index == 2) {
+      var petData = {
+        picID: pic3.id, 
+        picName: pic3.name,
+        picPic: pic3.photos,
+        picDesc: pic3.description,
+        picURL: pic3.url,
+      }
+    } else if (index == 3) {
+      var petData = {
+        picID: pic1.id, 
+        picName: pic1.name,
+        picPic: pic1.photos,
+        picDesc: pic1.description,
+        picURL: pic1.url,
+      }
+    }
+
+    globalPets.push(petData);
+    console.log(globalPets)
+    localStorage.setItem("pet info", JSON.stringify(globalPets))
+  };
+
 }
+
+function renderFav () {
+  let favContent = document.getElementById("fav-petcards");
+  favContent.innerHTML = "";
+  let getPetData = localStorage.getItem("pet info");
+  getPetData = JSON.parse(getPetData)
+  globalPets = getPetData
+  let defaultPic = "./Assets/IMAGES/pet-filler-img.jpg"
+  let defaultDesc = ""
+  for (i = 0; i < getPetData.length; i++) {
+    console.log(getPetData[i].picPic.length)
+    if (getPetData[i].picPic.length > 0){
+      defaultPic = getPetData[i].picPic[0].medium
+    }
+    if (getPetData[i].picDesc == null){
+      defaultDesc = "Adopt Me!"
+    }
+    else{
+      defaultDesc = getPetData[i].picDesc
+    }
+    
+    favContent.innerHTML = favContent.innerHTML + 
+    `
+    <div class="tile is-parent">
+      <div class="tile is-child box">
+        <p id="${getPetData[i].picID}" class="title has-text-centered">
+        ${getPetData[i].picName}
+          <button class="button is-link is-pulled-right" data-target="favorite-page">
+            <ion-icon name="paw-outline"></ion-icon> 
+          </button>
+        </p>
+        <div class="columns is-flex is-centered">
+          <figure>
+              <a id="${getPetData[i].picID}" href="${getPetData[i].picURL} target="_blank"><img id="" src="${defaultPic}"></a>
+          </figure>
+          <p>${defaultDesc}</p>
+        </div>
+      </div>
+    </div>
+    `
+  }
 }
+
+
 async function search() {
   event.preventDefault();
   let searchstring = document.getElementById("searchstring").value;
@@ -125,9 +218,9 @@ async function search() {
       // console.log(` -- ${++animalID}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
       
       // handle missing photo
-      if (animal.photos[0] === undefined) {
+      if (animal.photos[0] == undefined) {
           animal.photos = [{"medium":""}]
-          animal.photos[0].medium = "./Assets/IMAGES/pet-filler-img.jpg"
+          animal.photos[0].medium = "./Assets/IMAGES/pet-filler-img.jpg";
       }
       // append cards for results
       document.getElementById("pageName").innerHTML = "Available pets"
@@ -160,6 +253,7 @@ form.addEventListener("submit", search);
 function test() {
   console.log(results.animals[0])
 }
+
 // trent's code
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
@@ -185,6 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $trigger.addEventListener("click", () => {
       openModal($target);
+      renderFav();
     });
   });
 
