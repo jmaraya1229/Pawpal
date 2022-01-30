@@ -6,7 +6,6 @@ let filteredResults = [];
 let searchform = document.getElementById("searchform");
 searchform.addEventListener("submit", search);
 
-
 const client = new petfinder.Client({
   apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
   secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
@@ -29,7 +28,7 @@ getpics();
 if (localStorage.getItem("favorites") !== null) {
   globalPets = JSON.parse(localStorage.getItem("favorites"));
   renderFav();
-  console.log(globalPets)
+  console.log(globalPets);
 }
 
 //pulls 3 newest pets added to petfinder on pageload
@@ -50,6 +49,10 @@ async function getpics() {
       animal.photos = [{ medium: "" }];
       animal.photos[0].medium = "./Assets/IMAGES/pet-filler-img.jpg";
     }
+    // handle missing desc
+    if (animal.description === null) {
+      animal.description = "Adopt Me!";
+    }
     // append cards for results
     document.getElementById("pageName").innerHTML = "Newest Pets!";
 
@@ -68,20 +71,17 @@ async function getpics() {
 
     i++;
   });
-    buildFavBtns();
-
-  
+  buildFavBtns();
 }
 //adds event listeners to favorite buttons
 function buildFavBtns() {
   var favBtns = Array.from(document.getElementsByClassName("fav-btn"));
   favBtns.forEach(function (favBtn) {
-    favBtn.addEventListener("click", function(event) {
+    favBtn.addEventListener("click", function (event) {
       event.preventDefault();
       storePets(event);
-    })
-  })
- 
+    });
+  });
 }
 // stores favs locally
 function storePets(event) {
@@ -104,10 +104,10 @@ function storePets(event) {
 function renderFav() {
   let favContent = document.getElementById("fav-petcards");
   favContent.innerHTML = "";
-  globalPets.forEach(function (pet){
+  globalPets.forEach(function (pet) {
     favContent.innerHTML = favContent.innerHTML =
-    favContent.innerHTML +
-   `
+      favContent.innerHTML +
+      `
  <div class="tile is-parent">
    <div class="tile is-child box">
      <p id="${pet.id}" class="title has-text-centered">
@@ -125,10 +125,10 @@ function renderFav() {
    </div>
  </div>
  `;
-  })
-  }
+  });
+}
 
-//handles search form 
+//handles search form
 async function search(event) {
   event.preventDefault();
   let searchstring = document.getElementById("searchstring").value;
@@ -165,6 +165,10 @@ async function search(event) {
         animal.photos = [{ medium: "" }];
         animal.photos[0].medium = "./Assets/IMAGES/pet-filler-img.jpg";
       }
+      // handle missing desc
+      if (animal.description === null) {
+        animal.description = "Adopt Me!";
+      }
       // append cards for results
       document.getElementById("pageName").innerHTML = "Search Results:";
       $("#randomCard1").hide();
@@ -192,16 +196,6 @@ async function search(event) {
 function test() {
   console.log("hello");
 }
-
-
-
-
-
-
-
-
-
-
 
 // trent's code
 document.addEventListener("DOMContentLoaded", () => {
@@ -255,8 +249,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-
 
 console.log(document.getElementById("search-filters"));
 
