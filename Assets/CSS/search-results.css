@@ -25,6 +25,10 @@ h1 {
   background-color: lightskyblue;
 }
 
+#favorite-button {
+  background-color: #485fc7;
+}
+
 .columns {
   gap: 10px;
 }

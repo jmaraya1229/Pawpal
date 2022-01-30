@@ -140,7 +140,7 @@ async function search() {
         <div class="title has-text-centered is-size-2">${animal.name}</div>
         <div class="pet-pic">
         <a href="${animal.url}" target="_blank"><img class="" src="${animal.photos[0].medium}"></a>
-        <img class="fav-btn is-justify-content-center" src="./Assets/IMAGES/heart-outline.svg">
+        <img class="fav-btn md hydrated" src="./Assets/IMAGES/md-paw.svg">
         </div>
         <p>${animal.description}</p>
         </div>
