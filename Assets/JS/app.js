@@ -127,7 +127,7 @@ async function search() {
       // handle missing photo
       if (animal.photos[0] === undefined) {
           animal.photos = [{"medium":""}]
-          animal.photos[0].medium = "./Assets/IMAGES/Placeholder-Image-400.webp"
+          animal.photos[0].medium = "./Assets/IMAGES/pet-filler-img.jpg"
       }
       // append cards for results
       document.getElementById("pageName").innerHTML = "Available pets"
