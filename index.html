@@ -64,7 +64,7 @@
   <div class="tile is-ancestor">
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <button class="button is-link is-pulled-right" data-target="favorite-page" id="fav-pet-1">
+        <button class="button is-link is-pulled-right" data-target="favorite-page" name="add-fav">
           <ion-icon name="paw-outline"></ion-icon> 
         </button>
        <br><br><br>
@@ -82,7 +82,7 @@
     <!--Cat Pic-->
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <button class="button is-link is-pulled-right" data-target="favorite-page" id="fav-pet-2">
+        <button class="button is-link is-pulled-right" data-target="favorite-page" name="add-fav">
           <ion-icon name="paw-outline"></ion-icon> 
         </button>
         <br><br><br>
@@ -99,7 +99,7 @@
     <!--Random Animal-->
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <button class="button is-link is-pulled-right" data-target="favorite-page" id="fav-pet-3">
+        <button class="button is-link is-pulled-right" data-target="favorite-page" name="add-fav">
           <ion-icon name="paw-outline"></ion-icon> 
         </button>
         <br><br><br>
@@ -121,37 +121,9 @@
   <div class="modal-content">
     <div class="box" id="fav-background">
         <div class="tile is ancestor">
-          <div class="tile is-vertical">
+          <div class="tile is-vertical" id="fav-petcards">
             <h1 class="title has-text-centered is-1 has-text-white has-text-weight-bold">Favorites</h1>
             <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p id="randomname" class="title has-text-centered">
-                  Pet Name 1
-                  <button class="button is-link is-pulled-right" data-target="favorite-page">
-                    <ion-icon name="paw-outline"></ion-icon> 
-                  </button>
-                </p>
-                <div class="columns is-flex is-centered">
-                  <figure>
-                      <a id="" href="" target=""><img id="" src="./Assets/IMAGES/pet-filler-img.jpg" alt="temp"></a>
-                  </figure>
-                  </div>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p id="randomname" class="title has-text-centered">
-                  Pet Name 2
-                  <button class="button is-link is-pulled-right" data-target="favorite-page">
-                    <ion-icon name="paw-outline"></ion-icon> 
-                  </button>
-                </p>
-                <div class="columns is-flex is-centered">
-                  <figure>
-                      <a id="" href="" target=""><img id="" src="./Assets/IMAGES/pet-filler-img.jpg" alt="temp"></a>
-                  </figure>
-                  </div>
-              </article>
             </div>
           </div>
         </div>

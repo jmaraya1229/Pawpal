@@ -1,3 +1,6 @@
+var globalPets = [];
+
+
 // will's code
 //grant_type=client_credentials&client_id=du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4&client_secret=AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD https://api.petfinder.com/v2/oauth2/token
 
@@ -18,8 +21,8 @@ let results = {};
 // secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
 
 const client = new petfinder.Client({
-  apiKey: "c4Kr5BRTXhQEhXoQweeNHLhO43gdfD4sCbYy6vD9s93RuRluyB",
-  secret: "LpRMDqN9WakbzJjstuJ4TxzvQDg6Qk9o9I60R1na",
+  apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
+  secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
 });
 
 async function getpics() {
@@ -35,7 +38,7 @@ async function getpics() {
   let pic1 = randompic.data.animals[0];
   let pic2 = randompic.data.animals[1];
   let pic3 = randompic.data.animals[2];
-  console.log(pic1);
+  // console.log(pic1);
 
   document.getElementById("randomlink").href = pic1.url;
 
@@ -56,10 +59,9 @@ async function getpics() {
   document.getElementById("catdesc").textContent = pic3.description;
 
   //   console.log(randomanimal.primary_photo_cropped);
-
   //   console.log(randomphoto);
 
-  console.log(randompic)
+  // console.log(randompic)
 
   if (pic1.photos.length == 0) {
     document.getElementById("random-pic").src = ("./Assets/IMAGES/pet-filler-img.jpg");
@@ -95,8 +97,99 @@ async function getpics() {
     document.getElementById("catdesc").textContent = "Adopt me!";
   }  else {
     document.getElementById("catdesc").textContent = pic3.description;
+  }
+
+  // To store fav's on index.html
+  var savePetBtns = document.getElementsByTagName("button");
+  console.log(savePetBtns)
+  for (let i = 3; i <= 5 ; i++) {
+    savePetBtns[i].addEventListener("click", function(event) {
+    console.log(savePetBtns[i])
+    event.preventDefault ();
+    storePets(i);
+    });
+  }
+
+  function storePets(index) {
+    
+    index = index - 2;
+    console.log(index)
+    if (index == 1) {
+      var petData = {
+        picID: pic2.id, 
+        picName: pic2.name,
+        picPic: pic2.photos,
+        picDesc: pic2.description,
+        picURL: pic2.url,
+      }
+    } else if (index == 2) {
+      var petData = {
+        picID: pic3.id, 
+        picName: pic3.name,
+        picPic: pic3.photos,
+        picDesc: pic3.description,
+        picURL: pic3.url,
+      }
+    } else if (index == 3) {
+      var petData = {
+        picID: pic1.id, 
+        picName: pic1.name,
+        picPic: pic1.photos,
+        picDesc: pic1.description,
+        picURL: pic1.url,
+      }
+    }
+
+    globalPets.push(petData);
+    console.log(globalPets)
+    localStorage.setItem("pet info", JSON.stringify(globalPets))
+  };
+
 }
+
+function renderFav () {
+  let favContent = document.getElementById("fav-petcards");
+  favContent.innerHTML = "";
+  let getPetData = localStorage.getItem("pet info");
+  getPetData = JSON.parse(getPetData)
+  globalPets = getPetData
+  let defaultPic = "./Assets/IMAGES/pet-filler-img.jpg"
+  let defaultDesc = ""
+  for (i = 0; i < getPetData.length; i++) {
+    console.log(getPetData[i].picPic.length)
+    if (getPetData[i].picPic.length > 0){
+      defaultPic = getPetData[i].picPic[0].medium
+    }
+    if (getPetData[i].picDesc == null){
+      defaultDesc = "Adopt Me!"
+    }
+    else{
+      defaultDesc = getPetData[i].picDesc
+    }
+    
+    favContent.innerHTML = favContent.innerHTML + 
+    `
+    <div class="tile is-parent">
+      <div class="tile is-child box">
+        <p id="${getPetData[i].picID}" class="title has-text-centered">
+        ${getPetData[i].picName}
+          <button class="button is-link is-pulled-right" data-target="favorite-page">
+            <ion-icon name="paw-outline"></ion-icon> 
+          </button>
+        </p>
+        <div class="columns is-flex is-centered">
+          <figure>
+              <a id="${getPetData[i].picID}" href="${getPetData[i].picURL} target="_blank"><img id="" src="${defaultPic}"></a>
+          </figure>
+          <p>${defaultDesc}</p>
+        </div>
+      </div>
+    </div>
+    `
+  }
 }
+
+
 async function search() {
   event.preventDefault();
   let searchstring = document.getElementById("searchstring").value;
@@ -125,20 +218,20 @@ async function search() {
       // console.log(` -- ${++animalID}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
       
       // handle missing photo
-      if (animal.photos[0] === undefined) {
+      if (animal.photos[0] == undefined) {
           animal.photos = [{"medium":""}]
-          animal.photos[0].medium = "./Assets/IMAGES/Placeholder-Image-400.webp"
+          animal.photos[0].medium = "./Assets/IMAGES/pet-filler-img.jpg";
       }
       // append cards for results
       resultscontainer.innerHTML = resultscontainer.innerHTML + 
         `
-        <div id="${animal.id}" class="column box pet-card has-text-centered is-justify-content-center">
-        <div class="title has-text-centered is-size-2">${animal.name}</div>
-        <div class="pet-pic">
-        <a href="${animal.url}" target="_blank"><img class="" src="${animal.photos[0].medium}"></a>
-        <img class="fav-btn is-justify-content-center" src="./Assets/IMAGES/heart-outline.svg">
-        </div>
-        <p>${animal.description}</p>
+        <div id="${animal.id}" class="column box pet-card is-one-quarter has-text-centered is-justify-content-center">
+          <div class="title has-text-centered is-size-2">${animal.name}</div>
+          <div class="pet-pic">
+            <a href="${animal.url}" target="_blank"><img class="" src="${animal.photos[0].medium}"></a>
+            <img class="fav-btn is-justify-content-center" src="./Assets/IMAGES/heart-outline.svg">
+          </div>
+          <p>${animal.description}</p>
         </div>
         `
     });
@@ -150,11 +243,13 @@ async function search() {
 test() 
   // console.log(results);
 }
+
 let form = document.getElementById("searchform");
 form.addEventListener("submit", search);
 function test() {
   console.log(results.animals[0])
 }
+
 // trent's code
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
@@ -176,10 +271,9 @@ document.addEventListener("DOMContentLoaded", () => {
   (document.querySelectorAll(".js-modal-trigger") || []).forEach(($trigger) => {
     const modal = $trigger.dataset.target;
     const $target = document.getElementById(modal);
-    console.log($target);
-
     $trigger.addEventListener("click", () => {
       openModal($target);
+      renderFav();
     });
   });
 
@@ -205,4 +299,5 @@ document.addEventListener("DOMContentLoaded", () => {
       closeAllModals();
     }
   });
+
 });
