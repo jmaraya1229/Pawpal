@@ -10,6 +10,7 @@ Pawpal is an interactive web application where the user is able to input a desir
 AS A pet person
 I WANT to easily find adoptable pets in my area
 SO THAT I can have a furry friend
+```
 
 ## Technologies used
 * Openweather api
