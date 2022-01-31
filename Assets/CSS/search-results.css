@@ -90,3 +90,9 @@ img {
   height: 22rem;
   width: 20rem;
 }
+
+#clearAll {
+  background-color: red;
+  color: white;
+  font-size: 1.5rem;
+}
