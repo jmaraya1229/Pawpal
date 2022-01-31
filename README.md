@@ -1,9 +1,9 @@
 # Pawpal
 
 ## Our Task
-To create a function web application showcasing the skills we've learned thus far.
+To create a functional web application showcasing the skills we've learned thus far.
 
-Pawpal is an interactive web application where the user is able to input a desired location with a specified search radius to search for adoptable animals. On the homepage, the user is able to view three adoptable animals, a search bar, and a favorites page that may contain any animals the user may have bookmarked. After the user clicks the search button, the user will be led to a results page containing a list of animals that are adoptable in the specified location and search radius. A filter button containing a variety of attributes will be available to filter out the specific traits the user may want to have such as gender and age. The user will also be able to save certain pets by pressing the paw print located on the pet's box, and it is easily retrievable by clicking the favorites button.
+Pawpal is an interactive web application where the user is able to input a desired location within a specified radius to search for adoptable animals. On the homepage, the user is able to view three adoptable animals, a search bar, and a favorites button that leads to a modal that may contain any animals the user may have bookmarked. After the user clicks the search button, the user will be led to a results page containing a list of animals that are adoptable based on the parameters specified in the location and search radius. A filter button containing a variety of attributes will also be available to filter out specific traits the user may want to apply such as gender and age. If the user wants to save a certain pet profile to view for later, they will be able to do so by pressing the paw print located next to each pet's image. The user will be able to easily retrieve the saved pet by clicking the favorites button that is available on the home page and results page.
 
 
 ```md
@@ -13,8 +13,8 @@ SO THAT I can have a furry friend
 ```
 
 ## Technologies used
-* Openweather api
-* petfinder api
+* Openweathermap api
+* Petfinder api
 
 ## Screenshot
 ![screenshot](./Assets/IMAGES/...png)
