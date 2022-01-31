@@ -1,4 +1,5 @@
 var globalPets = [];
+
 let resultscontainer = document.getElementById("populate-search-results");
 let geoAPIKey = "adbcd1fea76a22fc844c199455b4e260";
 let results = {};
@@ -109,12 +110,14 @@ function renderFav() {
     $('#clearAll').hide()
   }
   else {
-    $('#clearAll').show()
+    $('#favorites').empty();
+    $('.favDiv').remove();
+    $('#clearAll').show();
   globalPets.forEach(function (pet) {
     favContent.innerHTML = favContent.innerHTML =
       favContent.innerHTML +
       `
-      
+      <div class="favDiv">
       <div id="${pet.id}" class="box pet-card has-text-centered is-justify-content-center is-one-quarter">
       <div class="title has-text-centered is-size-2">${pet.name}</div>
       <div class="pet-pic">
@@ -122,6 +125,7 @@ function renderFav() {
       <img class="fav-btn md hydrated is-link is-pulled-right" data-target="favorite-page" name="add-fav" src="./Assets/IMAGES/md-paw.svg">
       </div>
       <p>${pet.description}</p>
+      </div>
       </div>
       `;
   });
