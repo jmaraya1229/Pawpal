@@ -3,6 +3,7 @@ let resultscontainer = document.getElementById("populate-search-results");
 let geoAPIKey = "adbcd1fea76a22fc844c199455b4e260";
 let results = {};
 let filteredResults = [];
+$('#filterButton').hide();
 
 let searchform = document.getElementById("searchform");
 searchform.addEventListener("submit", search);
@@ -103,29 +104,28 @@ function storePets(event) {
 
 function renderFav() {
   let favContent = document.getElementById("fav-petcards");
-  favContent.innerHTML = "";
+  if(globalPets.length === 0){
+    $('#favorites').text("No Favorites Selected")
+    $('#clearAll').hide()
+  }
+  else {
+    $('#clearAll').show()
   globalPets.forEach(function (pet) {
     favContent.innerHTML = favContent.innerHTML =
       favContent.innerHTML +
       `
- <div class="tile is-parent">
-   <div class="tile is-child box">
-     <p id="${pet.id}" class="title has-text-centered">
-     ${pet.name}
-       <button class="button is-link is-pulled-right" data-target="favorite-page">
-         <ion-icon name="paw-outline"></ion-icon> 
-       </button>
-     </p>
-     <div class="columns is-flex is-centered">
-       <figure>
-           <a href="${pet.URL} target="_blank"><img id="" src="${pet.photos[0].medium}"></a>
-       </figure>
-       <p>${pet.description}</p>
-     </div>
-   </div>
- </div>
- `;
+      
+      <div id="${pet.id}" class="box pet-card has-text-centered is-justify-content-center is-one-quarter">
+      <div class="title has-text-centered is-size-2">${pet.name}</div>
+      <div class="pet-pic">
+      <a href="${pet.url}" target="_blank"><img class="" src="${pet.photos[0].medium}"></a>
+      <img class="fav-btn md hydrated is-link is-pulled-right" data-target="favorite-page" name="add-fav" src="./Assets/IMAGES/md-paw.svg">
+      </div>
+      <p>${pet.description}</p>
+      </div>
+      `;
   });
+  }
 }
 
 //handles search form
@@ -135,6 +135,7 @@ async function search(event) {
   let distance = document.getElementById("distance").value;
   let locationURL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchstring}&limit=5&appid=${geoAPIKey}`;
   let location = await (await fetch(locationURL)).json();
+  $('#filterButton').show();
   if (location[0] === undefined) {
     document.getElementById("searchstring").value = "";
     document.getElementById("searchstring").placeholder = "Invalid Entry";
@@ -314,3 +315,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+//Clear LocalStorage
+
+
+function clearAll() {
+  localStorage.clear();
+  location.reload()
+}
+
