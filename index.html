@@ -33,7 +33,7 @@
       <button id="searchbutton" type="submit" class="is-link button">Search</button>
       </form>
   <div class="navbar-end">
-    <div class="button is-link js-modal-trigger mt-3 mx-2" aria-label="menu" data-target="modal-js-example">Filters</div>
+    <div id="filterButton" class="button is-link js-modal-trigger is-size-5 mt-2 mx-2" aria-label="menu" data-target="modal-js-example">Filters</div>
     <!-- Desktop Favorite Button -->
     <button class="button is-link is-medium mt-2 js-modal-trigger is-hidden-mobile" data-target="favorite-page" id="favorite-button">
     <ion-icon name="paw-outline"></ion-icon> 
@@ -58,58 +58,6 @@
     </div>
   </section>
 
-    <!--Dog pic-->
-  <!-- <div id="randomCard1"  class="tile is-ancestor">
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-        <button class="button is-link is-pulled-right" data-target="favorite-page" name="add-fav">
-          <ion-icon name="paw-outline"></ion-icon> 
-        </button>
-       <br><br><br>
-        <div class="columns is-flex is-centered">
-
-        <figure>
-            <a id="doglink" href="" target="_blank"><img id="dog-pic" src="" alt="temp"></a>
-        </figure>
-        </div>
-        <p id="dogname" class="title has-text-centered"></p>
-        <p id="dogdesc" class="subtitle has-text-centered"></p>
-      </article>
-    </div> -->
-
-    <!--Cat Pic-->
-    <div id="randomCard2" class="tile is-parent is-hidden">
-      <article class="tile is-child box">
-        <button class="button is-link is-pulled-right" data-target="favorite-page" name="add-fav">
-          <ion-icon name="paw-outline"></ion-icon> 
-        </button>
-        <br><br><br>
-        <div class="columns is-flex is-centered">
-          <figure>
-              <a id="catlink" href="" target="_blank"><img id="cat-pic" src="" alt="temp"></a>
-          </figure>
-          </div>
-        <p id="catname" class="title has-text-centered"></p>
-        <p id="catdesc" class="subtitle has-text-centered"></p>
-      </article>
-    </div>
-
-    <!--Random Animal-->
-    <!-- <div id="randomCard3" class="tile is-parent">
-      <article class="tile is-child box">
-        <button class="button is-link is-pulled-right" data-target="favorite-page" name="add-fav">
-          <ion-icon name="paw-outline"></ion-icon> 
-        </button>
-        <br><br><br>
-        <div class="columns is-flex is-centered">
-          <figure>
-              <a id="randomlink" href="" target="_blank"><img id="random-pic" src="" alt="temp"></a>
-          </figure>
-          </div>
-        <p id="randomname" class="title has-text-centered"></p>
-        <p id="randomdesc" class="subtitle has-text-centered "></p>
-      </article>
-    </div> -->
   </div>
 
   <div class="columns is-multiline is-centered" id="populate-search-results"></div>
@@ -122,13 +70,13 @@
     <div class="box" id="fav-background">
         <div class="tile is ancestor">
           <div class="tile is-vertical" id="fav-petcards">
-            <h1 class="title has-text-centered is-1 has-text-white has-text-weight-bold">Favorites</h1>
-
+            <h1 id="favorites" class="title has-text-centered is-1 has-text-white has-text-weight-bold">Favorites</h1>     
             <div class="tile is-parent">
             </div>
           </div>
         </div>
     </div>
+    <button id="clearAll" class="button is-fullwidth is-rounded" onclick="clearAll()">Clear Favorites</button>
   </div>
 
   <div class="columns is-multiline is-mobile is-centered " id="populate-search-results">
