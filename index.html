@@ -12,17 +12,14 @@
 
 </head>
 
-<body class="has-background-light">
+<body style="background-image: url('./Assets/IMAGES/LB.background.jpeg');">
   <!--NavBar Start-->
   <nav class="navbar" role="navigation" aria-label="main navigation">
-
-  <!-- search bar -->
-    <!--search bar-->
-    <form id="searchform" class="is-vcentered field has-addons">
+    <form id="searchform" class="field has-addons mt-3 mx-3">
       <div class="control">
           <input id="searchstring" class="input" type="text" placeholder="Location e.g San Diego">
       </div>
-      <div class="control">
+      <div class="control mx-2">
           <div class="select">
               <select id="distance">
                   <option>Distance</option>
@@ -33,14 +30,10 @@
               </select>
           </div>
       </div>
-      <button id="searchbutton" type="submit" class="is-link is-rounded button">Search</button>
-      <div class="button is-rounded is-link js-modal-trigger" aria-label="menu" data-target="modal-js-example">Filters</div>
+      <button id="searchbutton" type="submit" class="is-link button">Search</button>
       </form>
   <div class="navbar-end">
-
-    <!-- Icon for when pet is put on favorites
-    <ion-icon name="paw"></ion-icon> -->
-
+    <div class="button is-link js-modal-trigger mt-3 mx-2" aria-label="menu" data-target="modal-js-example">Filters</div>
     <!-- Desktop Favorite Button -->
     <button class="button is-link is-medium mt-2 js-modal-trigger is-hidden-mobile" data-target="favorite-page" id="favorite-button">
     <ion-icon name="paw-outline"></ion-icon> 
@@ -58,7 +51,7 @@
   <section class="hero is-small">
     <div class="hero-body">
       <div class="hero-body">
-        <h1 id="pageName" class="title has-text-centered is-1 has-text-white has-text-weight-bold is-size-3-mobile">
+        <h1 id="pageName" class="title has-text-centered is-1 has-text-black has-text-weight-bold is-size-3-mobile">
           Newest Pets!
         </h1>
       </div>
@@ -239,8 +232,7 @@
           </div>
       </div>
 
-<html style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
-<body style="background-image: url('./Assets/IMAGES/paw-background.jpg');">
+<html style="background-image: url('./Assets/IMAGES/LB.background.jpeg');">
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

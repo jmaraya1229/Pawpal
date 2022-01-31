@@ -13,7 +13,7 @@ html {
 }
 
 .navbar {
-  background-color: lightskyblue;
+  background-color: rgb(4, 128, 175);
 }
 
 h1 {
@@ -90,4 +90,3 @@ img {
   height: 22rem;
   width: 20rem;
 }
-
