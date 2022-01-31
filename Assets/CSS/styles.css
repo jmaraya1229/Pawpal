@@ -1,19 +1,19 @@
 body {
-  background-image: './Assets/IMAGES/paw-background.jpg';
+  background-image: "./Assets/IMAGES/paw-background.jpg";
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
 }
 
 html {
-  background-image: './Assets/IMAGES/paw-background.jpg';
+  background-image: "./Assets/IMAGES/paw-background.jpg";
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
 }
 
 .navbar {
-  background-color: lightskyblue;
+  background-color: rgba(4, 128, 175, 1) 47%;
 }
 
 h1 {
@@ -34,9 +34,9 @@ h1 {
   justify-content: center;
 }
 
-input[type=checkbox] {
-  width:20px; 
-  height:20px;
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
 }
 
 aside {
@@ -70,7 +70,23 @@ form select option {
   scrollbar-width: none;
 }
 
-.modal-conent::-webkit-scrollbar{
+.modal-conent::-webkit-scrollbar {
   display: none;
 }
 
+.box {
+  background: rgb(4, 128, 175);
+  background: linear-gradient(
+    0deg,
+    rgba(4, 128, 175, 1) 47%,
+    rgba(2, 162, 187, 1) 100%
+  );
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+form {
+  font-size: 1.3rem;
+}
