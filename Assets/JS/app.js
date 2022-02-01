@@ -62,7 +62,7 @@ function renderCards(animals) {
     resultscontainer.innerHTML =
       resultscontainer.innerHTML +
       `
-    <div id="${animal.id}" class="column box pet-card has-text-centered is-justify-content-center is-one-quarter">
+    <div id="${animal.id}" class="tile is-child box pet-card has-text-centered is-justify-content-center is-one-quarter">
     <div class="title has-text-centered is-size-2">${animal.name}</div>
     <div class="pet-pic">
     <a href="${animal.url}" target="_blank"><img class="" src="${animal.photos[0].medium}"></a>
