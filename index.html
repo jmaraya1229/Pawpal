@@ -1,104 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PawPal!</title>
-    <link rel="icon" href="./Assets/IMAGES/md-paw.svg">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="./Assets/CSS/styles.css">
-    <link rel="stylesheet" href="./Assets/CSS/search-results.css">
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PawPal!</title>
+  <link rel="icon" href="./Assets/IMAGES/md-paw.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="./Assets/CSS/styles.css">
+  <link rel="stylesheet" href="./Assets/CSS/search-results.css">
 </head>
 
 <body style="background-image: url('./Assets/IMAGES/LB.background.jpeg');">
+  
   <!--NavBar Start-->
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <form id="searchform" class="field has-addons mt-3 mx-3">
+  <nav class="navbar is-fixed-top is-justify-content-center-mobile is-spaced" role="navigation" aria-label="main navigation">
+    <form id="searchform" class="field has-addons m-2">
       <div class="control">
-          <input id="searchstring" class="input" type="text" placeholder="Location e.g San Diego">
+        <input id="searchstring" class="input is-medium" type="text" placeholder="Location e.g San Diego">
       </div>
-      <div class="control mx-2">
-          <div class="select">
-              <select id="distance">
-                  <option>Distance</option>
-                  <option value="5">5 miles</option>
-                  <option value="10">10 miles</option>
-                  <option value="15">15 miles</option>
-                  <option value="20">20 miles</option>
-              </select>
-          </div>
+      <div class="control is-medium mx-2">
+        <div class="select is-medium">
+          <select id="distance">
+            <option>Distance</option>
+            <option value="5">5 miles</option>
+            <option value="10">10 miles</option>
+            <option value="15">15 miles</option>
+            <option value="20">20 miles</option>
+          </select>
+        </div>
       </div>
-      <button id="searchbutton" type="submit" class="is-link button">Search</button>
-      </form>
-  <div class="navbar-end">
-    <div id="filterButton" class="button is-link js-modal-trigger is-size-5 mt-2 mx-2" aria-label="menu" data-target="modal-js-example">Filters</div>
-    <!-- Desktop Favorite Button -->
-    <button id="favoritesBtn" class="button is-link is-medium mt-2 js-modal-trigger is-hidden-mobile" data-target="favorite-page" id="favorite-button">
-    <ion-icon name="paw-outline"></ion-icon> 
-      Favorites
-    </button>
+      <button id="searchbutton" type="submit" class="is-link button is-medium mr-2">Search</button>
+    </form>
+
+    <div class="navbar-end">
+      <div id="filterButton" class="button is-link is-medium mr-2 js-modal-trigger" aria-label="menu" data-target="modal-js-example">Filters</div>
+
+      <!-- Desktop Favorite Button -->
+      <button id="favoritesBtn" class="button is-link is-medium js-modal-trigger is-hidden-mobile " data-target="favorite-page" id="favorite-button">
+        <ion-icon name="paw-outline"></ion-icon> 
+        Favorites
+      </button>
 
       <!-- Mobile Favorite Button -->
-      <button class="button is-link mt-2 is-pulled-right is-hidden-desktop js-modal-trigger" data-target="favorite-page" id="favorite-button">
+      <button class="button is-link is-pulled-right mx-2 mb-2 is-medium is-hidden-desktop is-hidden-tablet js-modal-trigger" data-target="favorite-page" id="favorite-button">
         <ion-icon name="paw-outline"></ion-icon> 
       </button>
-    </div>
+    </div>  
   </nav>
 
   <!--Header-->
-  <section class="hero is-small">
+  <section class="hero is-centered">
+    <div class=" hero-body is-small" name="fill-empty-space-in-navbar"></div>
     <div class="hero-body">
-      <div class="hero-body">
-        <h1 id="pageName" class="title has-text-centered is-1 has-text-black has-text-weight-bold is-size-3-mobile">
+      <div class="container has-text-centered">
+        <h1 id="pageName" class="title is-1 has-text-black has-text-weight-bold is-size-3-mobile">
           Newest Pets!
         </h1>
       </div>
     </div>
   </section>
 
-  </div>
+  <!-- Div where pets populate -->
+  <div class="columns is-multiline is-flex-wrap-wrap is-justify-content-center" id="populate-search-results"></div>
 
-  <div class="columns is-multiline is-centered" id="populate-search-results"></div>
-
-<!-- Favorite Modal -->
-<div id="favorite-page" class="modal">
-  <div class="modal-background"></div>
-
-  <div class="modal-content">
-    <div class="box" id="fav-background">
+  <!-- Favorite Modal -->
+  <div id="favorite-page" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box" id="fav-background">
         <div class="tile is ancestor">
           <div class="tile is-vertical" id="fav-petcards">
             <h1 id="favorites" class="title has-text-centered is-1 has-text-white has-text-weight-bold">Favorites</h1>     
-            <div class="tile is-parent">
-            </div>
+            <div class="tile is-parent"></div>
           </div>
         </div>
+      </div>
+      <button id="clearAll" class="button is-fullwidth is-rounded" onclick="clearAll()">Clear Favorites</button>
     </div>
-    <button id="clearAll" class="button is-fullwidth is-rounded" onclick="clearAll()">Clear Favorites</button>
+    <button class="modal-close is-large" aria-label="close"></button>
   </div>
 
-  <div class="tile is-ancestor">
-    <div class="tile is-parent is-multiline is-mobile is-centered" id="populate-search-results">
-    </div>
-  </div>
-
-  <button class="modal-close is-large" aria-label="close"></button>
-</div>
-<!-- filters modal -->
-<div id="modal-js-example" class="modal">
-  <div class="modal-background"></div>
-  
-  <div class="modal-content">
-    <div class="box">
-      <p class="has-text-centered is-size-3">Select Your Preferences</p>
-      <form id="search-filters" class="has-text-centered" action="submit">
-        <label class="is-size-4" for="type">Species:</label> 
-        <select class="mb-3 is-size-6" name="species">
-              <option value= null>All</option>
-              <option value="Dog">Dog</option>
-              <option value="Cat">Cat</option>
+  <!-- Filters modal -->
+  <div id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box">
+        <p class="has-text-centered is-size-3">Select Your Preferences</p>
+        <form id="search-filters" class="has-text-centered" action="submit">
+          <label class="is-size-4" for="type">Species:</label> 
+          <select class="mb-3 is-size-6" name="species">
+            <option value= null>All</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
           </select>
           <br>
           <label class="is-size-4" for="breed">Breed:</label>
@@ -106,28 +100,28 @@
           <br>
           <label class="is-size-4" for="age">Age:</label>
           <select class="mb-3 is-size-6" name="age" id="">
-              <option value=null>All</option>
-              <option value="Baby">Baby</option>
-              <option value="Young">Young</option>
-              <option value="Adult">Adult</option>
-              <option value="Senior">Senior</option>
+            <option value=null>All</option>
+            <option value="Baby">Baby</option>
+            <option value="Young">Young</option>
+            <option value="Adult">Adult</option>
+            <option value="Senior">Senior</option>
           </select>
           <br>
           <label class="is-size-4" for="size">Size:</label>
           <select class="mb-3 is-size-6" name="size">
-              <option value=null>All</option>
-              <option value="Small">Small</option>
-              <option value="Medium">Medium</option>
-              <option value="Large">Large</option>
-              <option value="XLarge">XL</option>
+            <option value=null>All</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+            <option value="XLarge">XL</option>
           </select>
           <br>
           <label class="is-size-4" for="gender">Gender:</label>
           <select class="mb-3 is-size-6" name="gender">
-              <option value=null>All</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Unknown">Unknown</option>
+            <option value=null>All</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Unknown">Unknown</option>
           </select>
           <br>
           <label class="is-size-4" for="colors">Color:</label>
@@ -135,12 +129,12 @@
           <br>
           <label class="is-size-4" for="coat">Coat:</label>
           <select class="mb-3 is-size-6" name="coat" id="">
-              <option value=null>All</option>
-              <option value="Short">Short</option>
-              <option value="Medium">Medium</option>
-              <option value="Long">Long</option>
-              <option value="Wire">Wiry</option>
-              <option value="Curly">Curly</option>
+            <option value=null>All</option>
+            <option value="Short">Short</option>
+            <option value="Medium">Medium</option>
+            <option value="Long">Long</option>
+            <option value="Wire">Wiry</option>
+            <option value="Curly">Curly</option>
           </select>
           <br>
           <label class="mb-3 is-size-4"for="spayneuter">Spayed/Neutered:</label>
@@ -175,17 +169,18 @@
           <br>
           <input class="mb-3" type="checkbox" name="gooddogs" id="gooddogs">
           <div class="buttons has-addons is-centered">
-              <button class="button has-addons is-centered has-text-weight-bold" id="filter-submit">Submit</button>
+          <button class="button has-addons is-centered has-text-weight-bold" id="filter-submit">Submit</button>
           </div>
-          </form>
-              </div>
-          </div>
+        </form>
       </div>
+    </div>
+  </div>
 
-<html style="background-image: url('./Assets/IMAGES/LB.background.jpeg');">
+  <html style="background-image: url('./Assets/IMAGES/LB.background.jpeg');">
 
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/@petfinder/petfinder-js/dist/petfinder.min.js"></script>

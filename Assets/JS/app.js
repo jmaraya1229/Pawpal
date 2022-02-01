@@ -26,8 +26,9 @@ const client = new petfinder.Client({
 // apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
 // secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
 });
-getpics();
 
+// Generates main homepage elements
+getpics();
 if (localStorage.getItem("favorites") !== null) {
   globalPets = JSON.parse(localStorage.getItem("favorites"));
   renderFav();
@@ -62,13 +63,15 @@ function renderCards(animals) {
     resultscontainer.innerHTML =
       resultscontainer.innerHTML +
       `
-    <div id="${animal.id}" class="tile is-child box is-3 pet-card has-text-centered is-justify-content-center has-text-white">
-    <div class="title has-text-centered has-text-white is-size-2">${animal.name}</div>
-    <div class="pet-pic">
-    <a href="${animal.url}" target="_blank"><img class="" src="${animal.photos[0].medium}"></a>
-    <img class="fav-btn md hydrated is-link is-pulled-right" data-target="favorite-page" name="add-fav" src="./Assets/IMAGES/md-paw.svg">
+    <dic class="tile is-parent is-3">
+    <div id="${animal.id}" class="tile is-child box pet-card has-text-centered is-justify-content-center has-text-white">
+      <div class="title has-text-centered has-text-white is-size-2">${animal.name}</div>
+      <div class="pet-pic">
+      <a href="${animal.url}" target="_blank"><img class="" src="${animal.photos[0].medium}"></a>
+      <img class="fav-btn md hydrated is-link" data-target="favorite-page" name="add-fav" src="./Assets/IMAGES/md-paw.svg">
+      </div>
+      <p>${animal.description}</p>
     </div>
-    <p>${animal.description}</p>
     </div>
     `;
   });
@@ -90,7 +93,8 @@ else {
 storePets(event);
     });
   });
-}
+};
+
 // stores favs locally
 function storePets(event) {
   let eventParent = event.target.parentElement;
@@ -105,6 +109,7 @@ function storePets(event) {
   globalPets.push(fav);
   localStorage.setItem("favorites", JSON.stringify(globalPets));
 }
+
 //populates favorites modal
 function renderFav() {
   let favContent = document.getElementById("fav-petcards");
@@ -134,14 +139,14 @@ function renderFav() {
       <div class="title has-text-centered is-size-2">${pet.name}</div>
       <div class="pet-pic">
       <a href="${pet.url}" target="_blank"><img class="" src="${pet.photos[0].medium}"></a>
-      <img class="fav-btn md hydrated is-link is-pulled-right" data-target="favorite-page" name="add-fav" src="./Assets/IMAGES/favoritedImg.png">
+      <img class="fav-btn md hydrated is-link" data-target="favorite-page" name="add-fav" src="./Assets/IMAGES/favoritedImg.png">
       </div>
       <p>${pet.description}</p>
       </div>
       </div>
       `;
-  });
-  }
+      });
+    }
 }
 
 //handles search form
@@ -278,7 +283,13 @@ function filterResults() {
   let filteredAnimals = filteredResults
   renderCards(filteredAnimals);
   buildFavBtns();
+
+  // Closes filter modal after clicking submit
+  $("#filter-submit").click(function() {
+    $("#modal-js-example").removeClass("is-active");
+  });
 }
+
 
 // Handles modals
 document.addEventListener("DOMContentLoaded", () => {
@@ -290,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $el.classList.remove("is-active");
   }
   function closeAllModals() {
-    (document.querySelectorAll(".modal") || []).forEach(($modal) => {
+      (document.querySelectorAll(".modal") || []).forEach(($modal) => {
       closeModal($modal);
     });
   }
