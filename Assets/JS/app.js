@@ -83,6 +83,13 @@ function buildFavBtns() {
   favBtns.forEach(function (favBtn) {
     favBtn.addEventListener("click", function (event) {
       event.preventDefault();
+      
+  if ($(this).attr('src') == './Assets/IMAGES/md-paw.svg') {
+        $(this).attr("src", "./Assets/IMAGES/favoritedImg.png");
+} 
+else {
+        $(this).attr("src", "./Assets/IMAGES/md-paw.svg");
+}
       storePets(event);
     });
   });
