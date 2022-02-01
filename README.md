@@ -7,9 +7,9 @@ Pawpal is an interactive web application where the user is able to input a desir
 
 
 ```md
-AS A pet person
+AS A potential pet owner
 I WANT to easily find adoptable pets in my area
-SO THAT I can have a furry friend
+SO THAT I can adopt a new pet
 ```
 
 ## Technologies used
@@ -17,7 +17,7 @@ SO THAT I can have a furry friend
 * Petfinder api
 
 ## Screenshot
-![screenshot](./Assets/IMAGES/...png)
+![screenshot](./Assets/IMAGES/screenshot.png)
 
 ## Link
 * https://jmaraya1229.github.io/Pawpal/
