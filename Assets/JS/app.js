@@ -11,8 +11,8 @@ filterSubmission.addEventListener("submit", filterResults);
 
 //API key and secrets
 const client = new petfinder.Client({
-  apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4",
-  secret: "AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD",
+  apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
+  secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
 
   // will's petfinder creds:
 // apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4",
