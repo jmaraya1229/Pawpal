@@ -1,23 +1,20 @@
 var globalPets = [];
-
 let resultscontainer = document.getElementById("populate-search-results");
 let geoAPIKey = "adbcd1fea76a22fc844c199455b4e260";
 let results = {};
 let filteredResults = [];
 $('#filterButton').hide();
-
 let searchform = document.getElementById("searchform");
 searchform.addEventListener("submit", search);
-
 let filterSubmission = document.getElementById("search-filters");
 filterSubmission.addEventListener("submit", filterResults);
 
+//API key and secrets
 const client = new petfinder.Client({
   apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4",
   secret: "AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD",
-});
 
-// will's petfinder creds:
+  // will's petfinder creds:
 // apiKey: "du5LZGcyZhM51weBA55R5wexC39ZP2goVW2i7TAcayFnkDUtX4",
 // secret: "AStWV6OJyCylpnWHlOZh4HfR3w2zTiLWoCya9HAD",
 
@@ -28,7 +25,7 @@ const client = new petfinder.Client({
 // jesse's petfinder creds:
 // apiKey: "mFaTDg20CUKN5hJQNpl8OQ2SC6ClhkYHOKyfs7jrRkL6plQkqY",
 // secret: "9AyO9i6tDmZox227F5yn7ePOnkRvq67geVbb7fnA",
-
+});
 getpics();
 
 if (localStorage.getItem("favorites") !== null) {
@@ -90,7 +87,7 @@ function buildFavBtns() {
 else {
         $(this).attr("src", "./Assets/IMAGES/md-paw.svg");
 }
-      storePets(event);
+storePets(event);
     });
   });
 }
@@ -109,21 +106,21 @@ function storePets(event) {
   localStorage.setItem("favorites", JSON.stringify(globalPets));
 }
 //populates favorites modal
-
 function renderFav() {
   let favContent = document.getElementById("fav-petcards");
-  
+ //Filters globalPets and removes repeated Favorited 
   const
     keys = ['id'],
     filteredGlobalPets = globalPets.filter(
         (s => o => (v => !s.has(v) && s.add(v))(keys.map(k => o[k]).join('|')))
         (new Set)
     );
-
+//Changes HTML and hides Clear Favorite Button
   if(filteredGlobalPets.length === 0){
     $('#favorites').text("No Favorites Selected")
     $('#clearAll').hide()
   }
+  //Empties favorites shows clear localStorage button and creates favorited Animal Cards
   else {
     $('#favorites').empty();
     $('.favDiv').remove();
@@ -137,7 +134,7 @@ function renderFav() {
       <div class="title has-text-centered is-size-2">${pet.name}</div>
       <div class="pet-pic">
       <a href="${pet.url}" target="_blank"><img class="" src="${pet.photos[0].medium}"></a>
-      <img class="fav-btn md hydrated is-link is-pulled-right" data-target="favorite-page" name="add-fav" src="./Assets/IMAGES/md-paw.svg">
+      <img class="fav-btn md hydrated is-link is-pulled-right" data-target="favorite-page" name="add-fav" src="./Assets/IMAGES/favoritedImg.png">
       </div>
       <p>${pet.description}</p>
       </div>
@@ -283,34 +280,29 @@ function filterResults() {
   buildFavBtns();
 }
 
-// trent's code
+// Handles modals
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
   function openModal($el) {
     $el.classList.add("is-active");
   }
-
   function closeModal($el) {
     $el.classList.remove("is-active");
   }
-
   function closeAllModals() {
     (document.querySelectorAll(".modal") || []).forEach(($modal) => {
       closeModal($modal);
     });
   }
-
   // Add a click event on buttons to open a specific modal
   (document.querySelectorAll(".js-modal-trigger") || []).forEach(($trigger) => {
     const modal = $trigger.dataset.target;
     const $target = document.getElementById(modal);
-
     $trigger.addEventListener("click", () => {
       openModal($target);
       renderFav();
     });
   });
-
   // Add a click event on various child elements to close the parent modal
   (
     document.querySelectorAll(
@@ -323,21 +315,17 @@ document.addEventListener("DOMContentLoaded", () => {
       closeModal($target);
     });
   });
-
   // Add a keyboard event to close all modals
   document.addEventListener("keydown", (event) => {
     const e = event || window.event;
-
+    // Escape key
     if (e.keyCode === 27) {
-      // Escape key
       closeAllModals();
     }
   });
 });
 
 //Clear LocalStorage
-
-
 function clearAll() {
   localStorage.clear();
   location.reload()
