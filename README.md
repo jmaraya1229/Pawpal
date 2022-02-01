@@ -17,7 +17,7 @@ SO THAT I can adopt a new pet
 * Petfinder api
 
 ## Screenshot
-![screenshot](./Assets/IMAGES/screenshot.png)
+![screenshot](./Assets/IMAGES/Screenshot.png)
 
 ## Link
 * https://jmaraya1229.github.io/Pawpal/
