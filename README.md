@@ -17,7 +17,7 @@ SO THAT I can have a furry friend
 * Petfinder api
 
 ## Screenshot
-![screenshot](./Assets/IMAGES/...png)
+![screenshot](./Assets/IMAGES/screenshot.png)
 
 ## Link
 * https://jmaraya1229.github.io/Pawpal/
