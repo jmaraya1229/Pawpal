@@ -112,7 +112,15 @@ function storePets(event) {
 
 function renderFav() {
   let favContent = document.getElementById("fav-petcards");
-  if(globalPets.length === 0){
+  
+  const
+    keys = ['id'],
+    filteredGlobalPets = globalPets.filter(
+        (s => o => (v => !s.has(v) && s.add(v))(keys.map(k => o[k]).join('|')))
+        (new Set)
+    );
+
+  if(filteredGlobalPets.length === 0){
     $('#favorites').text("No Favorites Selected")
     $('#clearAll').hide()
   }
@@ -120,7 +128,7 @@ function renderFav() {
     $('#favorites').empty();
     $('.favDiv').remove();
     $('#clearAll').show();
-  globalPets.forEach(function (pet) {
+    filteredGlobalPets.forEach(function (pet) {
     favContent.innerHTML = favContent.innerHTML =
       favContent.innerHTML +
       `
@@ -334,4 +342,3 @@ function clearAll() {
   localStorage.clear();
   location.reload()
 }
-
